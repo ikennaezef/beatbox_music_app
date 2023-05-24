@@ -5,6 +5,7 @@ import TopCharts from "../components/TopCharts";
 import Categories from "../components/Categories";
 import Search from "../components/Search";
 import { Grid, GridItem } from "@chakra-ui/react";
+import Artistes from "../components/Artistes";
 export const songs = [
 	{
 		id: 1,
@@ -60,6 +61,7 @@ const HomePage = () => {
 				<Search />
 				<HomeHero />
 				<SmallSection title="New Releases" data={songs} />
+				<Artistes />
 				<SmallSection title="Popular Around You" data={songs} />
 				<SmallSection title="Your favorites" data={songs} />
 			</GridItem>
