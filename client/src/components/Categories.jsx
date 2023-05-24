@@ -44,6 +44,7 @@ const Categories = () => {
 			<SimpleGrid columns={2} gap={4}>
 				{categories.map((cat) => (
 					<Flex
+						key={cat.id}
 						align="center"
 						justify="center"
 						rounded="base"
