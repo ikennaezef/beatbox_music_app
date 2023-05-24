@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HorizontalMusicCard from "./HorizontalMusicCard";
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { appear } from "../theme/motionVariants";
+import { client } from "../api";
+import { AiOutlineLoading } from "react-icons/ai";
 
 const TopCharts = () => {
+	const [loading, setLoading] = useState(true);
+	const [data, setData] = useState([]);
+	const [error, setError] = useState(false);
+
+	const fetchData = async () => {
+		setLoading(true);
+		setError(false);
+		await client
+			.get("/songs/top")
+			.then((res) => {
+				setData(res.data);
+				setLoading(false);
+			})
+			.catch((err) => {
+				setError(true);
+				setLoading(false);
+				console.log(err);
+			});
+	};
+
+	useEffect(() => {
+		fetchData();
+	}, []);
+
 	return (
 		<Box
 			bg="zinc.800"
@@ -17,11 +43,23 @@ const TopCharts = () => {
 			<Heading as="h3" fontSize="lg" fontWeight={500} mt={2} mb={6}>
 				Top Charts
 			</Heading>
-			<Flex direction="column" gap={2}>
-				{[1, 2, 3, 4, 5, 6].map((music) => (
-					<HorizontalMusicCard data={music} key={music} />
-				))}
-			</Flex>
+			{loading ? (
+				<Flex align="center" color="accent.main" justify="center" minH="20rem">
+					<AiOutlineLoading color="inherit" className="spin" size={36} />
+				</Flex>
+			) : (
+				<Flex direction="column" gap={2}>
+					{data?.map((song) => (
+						<HorizontalMusicCard key={song._id} song={song} />
+					))}
+				</Flex>
+			)}
+
+			{error && (
+				<Box>
+					<Text>An error occured while fetching top charts.</Text>
+				</Box>
+			)}
 		</Box>
 	);
 };

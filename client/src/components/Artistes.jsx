@@ -31,23 +31,18 @@ const Artistes = () => {
 
 	return (
 		<Box mt={8}>
-			<Flex align="center" justify="space-between">
-				<Flex align="center" gap={3}>
-					<Heading as="h3" fontSize="xl" fontWeight={500}>
-						You May Like
-					</Heading>
-					<Box color="accent.main">
-						<AiFillPlayCircle size={20} color="inherit" />
-					</Box>
-				</Flex>
+			<Flex align="center" justify="space-between" mb={3}>
+				<Heading as="h3" fontSize="xl" fontWeight={500}>
+					You May Like
+				</Heading>
 				<Button variant="unstyled" color="accent.light" fontWeight={500}>
 					See more
 				</Button>
 			</Flex>
 
 			{loading ? (
-				<Flex align="center" justify="center" minH="20rem">
-					<AiOutlineLoading className="text-accent animate-spin" size={36} />
+				<Flex align="center" justify="center" color="accent.main" minH="20rem">
+					<AiOutlineLoading className="spin" size={36} />
 				</Flex>
 			) : (
 				<Flex

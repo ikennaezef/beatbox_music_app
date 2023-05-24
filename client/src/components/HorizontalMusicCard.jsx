@@ -4,7 +4,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { fadeInUp } from "../theme/motionVariants";
 
-const HorizontalMusicCard = ({ data }) => {
+const HorizontalMusicCard = ({ song }) => {
 	return (
 		<Box
 			as={motion.div}
@@ -16,7 +16,13 @@ const HorizontalMusicCard = ({ data }) => {
 			rounded="base">
 			<Flex align="center" justify="space-between">
 				<Flex align="center" gap={4}>
-					<Image src="/cover.jpg" alt="album" w={10} h={10} rounded="base" />
+					<Image
+						src={song?.coverImage}
+						alt="album"
+						w={10}
+						h={10}
+						rounded="base"
+					/>
 					<Box>
 						<Heading
 							as="h4"
@@ -24,16 +30,16 @@ const HorizontalMusicCard = ({ data }) => {
 							fontWeight={500}
 							color="zinc.200"
 							noOfLines={1}>
-							Sample Name
+							{song?.title}
 						</Heading>
 						<Text fontSize="xs" noOfLines={1} color="zinc.400">
-							Sample Artist
+							{song?.artistes.join(", ")}
 						</Text>
 					</Box>
 				</Flex>
 				<Flex align="center" gap={3} pr={3}>
 					<Text fontSize="sm" color="zinc.400">
-						2:33
+						{song?.duration.split(".").join(":")}
 					</Text>
 					<Button variant="unstyled">
 						<AiOutlineHeart />{" "}

@@ -53,17 +53,13 @@ export const songs = [
 
 const HomePage = () => {
 	return (
-		<Grid
-			templateColumns="repeat(8, 1fr)"
-			minH="100vh"
-			className="min-h-screen">
+		<Grid templateColumns="repeat(8, 1fr)" minH="100vh">
 			<GridItem colSpan={5} p={4}>
 				<Search />
 				<HomeHero />
-				<SmallSection title="New Releases" data={songs} />
+				<SmallSection title="New Releases" endpoint="/songs/releases" />
 				<Artistes />
-				<SmallSection title="Popular Around You" data={songs} />
-				<SmallSection title="Your favorites" data={songs} />
+				<SmallSection title="Popular Around You" endpoint="/songs/top" />
 			</GridItem>
 			<GridItem colSpan={3} p={4}>
 				<TopCharts />

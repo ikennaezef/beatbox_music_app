@@ -50,3 +50,16 @@ body::-webkit-scrollbar-thumb {
 	background: #3a3939;
 	margin: 1rem;
 }
+
+.spin {
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

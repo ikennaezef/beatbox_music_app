@@ -15,7 +15,6 @@ const SongCard = ({ song }) => {
 			minW="10rem"
 			pb={4}
 			overflow="hidden"
-			className="max-w-[12rem] hover:scale-105 transition-all"
 			role="group">
 			<Box h="10rem" mb={4} overflow="hidden">
 				<Image
