@@ -2,20 +2,26 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
 	Box,
+	Button,
 	Divider,
 	Flex,
 	Heading,
 	Image,
 	Skeleton,
-	SkeletonCircle,
 	SkeletonText,
 	Text,
 } from "@chakra-ui/react";
 import { client } from "../api";
 import ArtisteSong from "../components/ArtisteSong";
+import { BsFillPlayFill } from "react-icons/bs";
+import { MdErrorOutline } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { playTrack, setTrackList } from "../redux/slices/playerSlice";
 
 const ArtistePage = () => {
 	const { id } = useParams();
+	const dispatch = useDispatch();
+	const { trackList } = useSelector((state) => state.player);
 
 	const [artiste, setArtiste] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -27,7 +33,6 @@ const ArtistePage = () => {
 		await client
 			.get(`/artistes/${id}`)
 			.then((res) => {
-				console.log(res.data);
 				setArtiste(res.data);
 				setLoading(false);
 			})
@@ -41,6 +46,11 @@ const ArtistePage = () => {
 	useEffect(() => {
 		fetchArtiste();
 	}, []);
+
+	const handlePlay = () => {
+		dispatch(setTrackList(artiste?.songs));
+		dispatch(playTrack(artiste?.songs[0]));
+	};
 
 	if (loading) {
 		return (
@@ -92,8 +102,21 @@ const ArtistePage = () => {
 		);
 	}
 
+	if (error) {
+		return (
+			<Flex align="center" justify="center" minH="100vh">
+				<Flex direction="column" align="center" color="accent.light">
+					<MdErrorOutline color="inherit" size={32} />
+					<Text color="zinc.400" textAlign="center">
+						An error occured
+					</Text>
+				</Flex>
+			</Flex>
+		);
+	}
+
 	return (
-		<Box minH="100vh" p={4}>
+		<Box minH="100vh" p={4} pb={32}>
 			<Box pt={6}>
 				<Flex align="flex-start" justify="flex-start" gap={5}>
 					<Box minWidth="14rem" h="14rem">
@@ -121,16 +144,29 @@ const ArtistePage = () => {
 					</Box>
 				</Flex>
 				<Box mt={12}>
-					<Heading as="h3" fontSize="xl" mb={4} fontWeight={600}>
-						Songs
-					</Heading>
+					<Flex align="center" gap={6} mb={4}>
+						<Heading as="h3" fontSize="xl" fontWeight={600}>
+							Songs
+						</Heading>
+						<Button
+							onClick={handlePlay}
+							display="inline-flex"
+							alignItems="center"
+							variant="unstyled"
+							bg="accent.light"
+							color="white"
+							rounded="2rem"
+							py={1}
+							px={4}
+							leftIcon={<BsFillPlayFill size={20} />}>
+							Play All
+						</Button>
+					</Flex>
 					<Divider w="full" h="1px" border="0" bg="zinc.600" mb={3} />
 
 					<Flex direction="column" gap={4}>
 						{artiste?.songs?.map((song) => (
-							<>
-								<ArtisteSong key={song?._id} song={song} />
-							</>
+							<ArtisteSong key={song?._id} song={song} />
 						))}
 					</Flex>
 				</Box>
