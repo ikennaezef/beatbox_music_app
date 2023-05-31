@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import HorizontalMusicCard from "./HorizontalMusicCard";
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { appear } from "../theme/motionVariants";
 import { client } from "../api";
 import { AiOutlineLoading } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { playTrack, setTrackList } from "../redux/slices/playerSlice";
 
 const TopCharts = () => {
+	const dispatch = useDispatch();
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState([]);
 	const [error, setError] = useState(false);
@@ -31,6 +34,13 @@ const TopCharts = () => {
 		fetchData();
 	}, []);
 
+	const handlePlaySong = (song) => {
+		const index = data?.findIndex((s) => s._id == song._id);
+
+		dispatch(setTrackList({ list: data, index }));
+		dispatch(playTrack(song));
+	};
+
 	return (
 		<Box
 			bg="zinc.800"
@@ -49,8 +59,15 @@ const TopCharts = () => {
 				</Flex>
 			) : (
 				<Flex direction="column" gap={2}>
-					{data?.map((song) => (
-						<HorizontalMusicCard key={song._id} song={song} />
+					{data?.map((song, i) => (
+						<Flex key={i} align="center" gap={4}>
+							<Text>{1 + i}</Text>
+							<HorizontalMusicCard
+								key={song._id}
+								song={song}
+								onPlay={handlePlaySong}
+							/>
+						</Flex>
 					))}
 				</Flex>
 			)}

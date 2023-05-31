@@ -4,6 +4,7 @@ import SongCard from "./SongCard";
 import { Box, Button, Flex, Heading } from "@chakra-ui/react";
 import axios from "axios";
 import { client } from "../api";
+import { Link } from "react-router-dom";
 
 const SmallSection = ({ title, endpoint }) => {
 	const [loading, setLoading] = useState(false);
@@ -42,9 +43,11 @@ const SmallSection = ({ title, endpoint }) => {
 						<AiFillPlayCircle size={20} color="inherit" />
 					</Box>
 				</Flex>
-				<Button variant="unstyled" color="accent.light" fontWeight={500}>
-					See more
-				</Button>
+				<Link to="/library">
+					<Button variant="unstyled" color="accent.light" fontWeight={500}>
+						See more
+					</Button>
+				</Link>
 			</Flex>
 			{loading ? (
 				<Flex align="center" color="accent.main" justify="center" minH="20rem">

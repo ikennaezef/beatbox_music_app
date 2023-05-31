@@ -5,7 +5,12 @@ import React from "react";
 const ArtisteCard = ({ artiste }) => {
 	return (
 		<Link to={`/artiste/${artiste._id}`}>
-			<Box p={2} _hover={{ transform: "scale(1.05)" }} transition="0.5s ease">
+			<Flex
+				direction="column"
+				align="center"
+				p={2}
+				_hover={{ transform: "scale(1.05)" }}
+				transition="0.5s ease">
 				<Flex
 					align="center"
 					justify="center"
@@ -27,7 +32,7 @@ const ArtisteCard = ({ artiste }) => {
 				<Text fontSize="sm" fontWeight={500} textAlign="center" mt={4}>
 					{artiste.name}
 				</Text>
-			</Box>
+			</Flex>
 		</Link>
 	);
 };

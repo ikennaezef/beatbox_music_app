@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { appear } from "../theme/motionVariants";
+import { Link } from "react-router-dom";
 
 const HomeHero = () => {
 	return (
@@ -27,15 +28,16 @@ const HomeHero = () => {
 				bgGradient="linear(to-t, zinc.900, transparent)">
 				<Box w="full">
 					<Heading as="h1" fontSize="4xl" fontWeight={600} mb={2}>
-						Amazing Playlist
+						Amazing Playlists
 					</Heading>
 					<Text w="80%">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos omnis
-						nisi.
+						Listen to the best playlists curated by us and our users.
 					</Text>
-					<Button bg="zinc.100" color="zinc.800" py={5} px={8} mt={4}>
-						Listen Now
-					</Button>
+					<Link to="/playlists">
+						<Button bg="zinc.100" color="zinc.800" py={5} px={8} mt={4}>
+							Listen Now
+						</Button>
+					</Link>
 				</Box>
 			</Flex>
 		</Box>

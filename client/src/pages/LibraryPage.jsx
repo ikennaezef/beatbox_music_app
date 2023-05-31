@@ -31,7 +31,7 @@ const LibraryPage = () => {
 	}, []);
 
 	return (
-		<Box p={6} minH="100vh">
+		<Box p={6} pb={32} minH="100vh">
 			<Box mb={6}>
 				<Heading fontSize="2xl" fontWeight="semibold" mb={3}>
 					Library

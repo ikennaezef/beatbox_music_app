@@ -12,6 +12,7 @@ const Navbar = () => {
 			position="fixed"
 			top={0}
 			left={0}
+			zIndex={30}
 			minW="16rem"
 			minH="100vh"
 			borderRight="1px"

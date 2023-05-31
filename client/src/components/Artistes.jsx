@@ -3,6 +3,7 @@ import { Box, Button, Flex, Heading } from "@chakra-ui/react";
 import { AiFillPlayCircle, AiOutlineLoading } from "react-icons/ai";
 import ArtisteCard from "./ArtisteCard";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Artistes = () => {
 	const [artistes, setArtistes] = useState([]);
@@ -35,9 +36,11 @@ const Artistes = () => {
 				<Heading as="h3" fontSize="xl" fontWeight={500}>
 					You May Like
 				</Heading>
-				<Button variant="unstyled" color="accent.light" fontWeight={500}>
-					See more
-				</Button>
+				<Link to="/artistes">
+					<Button variant="unstyled" color="accent.light" fontWeight={500}>
+						See more
+					</Button>
+				</Link>
 			</Flex>
 
 			{loading ? (
