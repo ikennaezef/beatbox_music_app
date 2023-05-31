@@ -19,9 +19,15 @@ const SongSchema = new mongoose.Schema({
 		type: Array,
 		default: [],
 	},
-	artistIds: {
-		type: Array,
-		default: [],
+	artistIds: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Artiste",
+		},
+	],
+	likes: {
+		type: Map,
+		of: Boolean,
 	},
 	songUrl: {
 		type: String,

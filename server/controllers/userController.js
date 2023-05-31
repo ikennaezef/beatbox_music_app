@@ -2,6 +2,9 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
+//@desc Login a user
+//@route POST /api/auth/login
+//@access public
 const loginUser = async (req, res) => {
 	const { username, password } = req.body;
 
@@ -30,9 +33,19 @@ const loginUser = async (req, res) => {
 		process.env.JWT_SECRET
 	);
 
-	res.status(200).json(accessToken);
+	const returnedUser = {
+		id: user.id,
+		username: user.username,
+		favorites: user.favorites,
+		playlists: user.playlists,
+	};
+
+	res.status(200).json({ user: returnedUser, token: accessToken });
 };
 
+//@desc Login a user
+//@route POST /api/auth/register
+//@access public
 const registerUser = async (req, res) => {
 	const { username, password } = req.body;
 
@@ -62,7 +75,14 @@ const registerUser = async (req, res) => {
 		process.env.JWT_SECRET
 	);
 
-	res.status(200).json(accessToken);
+	const returnedUser = {
+		id: newUser.id,
+		username: newUser.username,
+		favorites: newUser.favorites,
+		playlists: newUser.playlists,
+	};
+
+	res.status(200).json({ user: returnedUser, token: accessToken });
 };
 
 export { loginUser, registerUser };

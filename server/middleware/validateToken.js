@@ -15,7 +15,7 @@ export const verifyToken = async (req, res, next) => {
 				if (err) {
 					return res.status(401).send("Invalid auth token");
 				}
-				req.user = decoded.id;
+				req.user = decoded.user;
 				next();
 			});
 
