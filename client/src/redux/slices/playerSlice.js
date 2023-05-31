@@ -23,9 +23,8 @@ export const playerSlice = createSlice({
 			state.isPlaying = true;
 		},
 		setTrackList: (state, action) => {
-			state.trackList = action.payload;
-			state.currentIndex = 0;
-			console.log(state.trackList);
+			state.trackList = action.payload.list;
+			state.currentIndex = action.payload.index ? action.payload.index : 0;
 		},
 		nextTrack: (state, action) => {
 			if (state.currentIndex >= state.trackList.length - 1) {

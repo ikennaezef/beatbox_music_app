@@ -62,11 +62,11 @@ const MusicPlayer = () => {
 	useEffect(() => {
 		setSongDetails({
 			volume: 1,
-			time:
-				audioRef.current &&
-				Math.round(
-					(audioRef.current.currentTime / audioRef.current.duration) * 100
-				),
+			time: audioRef?.current
+				? Math.round(
+						(audioRef?.current.currentTime / audioRef.current.duration) * 100
+				  )
+				: 0,
 			shuffle: false,
 			repeat: false,
 		});
@@ -127,11 +127,27 @@ const MusicPlayer = () => {
 	};
 
 	const handleNextSong = () => {
-		dispatch(nextTrack());
+		if (trackList.length == 1) {
+			restartSong();
+		} else {
+			dispatch(nextTrack());
+		}
 	};
 
 	const handlePreviousSong = () => {
-		dispatch(prevTrack());
+		if (trackList.length == 1) {
+			restartSong();
+		} else {
+			dispatch(prevTrack());
+		}
+	};
+
+	const restartSong = () => {
+		setSongDetails((prev) => {
+			return { ...prev, time: 0 };
+		});
+		audioRef.current.currentTime = 0;
+		audioRef.current.play();
 	};
 
 	const handleEnded = () => {
@@ -252,7 +268,7 @@ const MusicPlayer = () => {
 						defaultValue={0}
 						width="15rem"
 						onChange={seekPoint}
-						value={songDetails ? songDetails?.time : 0}>
+						value={!isNaN(songDetails?.time) ? songDetails?.time : 0}>
 						<SliderTrack bg="gray.400">
 							<SliderFilledTrack bg="accent.light" />
 						</SliderTrack>

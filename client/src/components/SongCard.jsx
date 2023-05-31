@@ -15,7 +15,7 @@ const SongCard = ({ song }) => {
 	const { currentTrack, isPlaying } = useSelector((state) => state.player);
 	const playSong = () => {
 		dispatch(setCurrentTrack(song));
-		dispatch(setTrackList([song]));
+		dispatch(setTrackList({ list: [song] }));
 		dispatch(setPlaying(true));
 	};
 

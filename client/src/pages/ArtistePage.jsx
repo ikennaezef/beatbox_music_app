@@ -48,8 +48,15 @@ const ArtistePage = () => {
 	}, []);
 
 	const handlePlay = () => {
-		dispatch(setTrackList(artiste?.songs));
+		dispatch(setTrackList({ list: artiste?.songs }));
 		dispatch(playTrack(artiste?.songs[0]));
+	};
+
+	const onSongPlay = (song) => {
+		const index = artiste?.songs.findIndex((s) => s._id == song._id);
+
+		dispatch(setTrackList({ list: artiste?.songs, index }));
+		dispatch(playTrack(song));
 	};
 
 	if (loading) {
@@ -166,7 +173,11 @@ const ArtistePage = () => {
 
 					<Flex direction="column" gap={4}>
 						{artiste?.songs?.map((song) => (
-							<ArtisteSong key={song?._id} song={song} />
+							<ArtisteSong
+								key={song?._id}
+								song={song}
+								handlePlay={onSongPlay}
+							/>
 						))}
 					</Flex>
 				</Box>

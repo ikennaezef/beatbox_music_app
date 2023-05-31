@@ -9,14 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { playTrack, setCurrentTrack } from "../redux/slices/playerSlice";
 import { BsSoundwave } from "react-icons/bs";
 
-const ArtisteSong = ({ song }) => {
+const ArtisteSong = ({ song, handlePlay }) => {
 	const dispatch = useDispatch();
 	const { currentTrack, isPlaying } = useSelector((state) => state.player);
 
 	const isCurrentTrack = currentTrack?._id === song._id;
 
 	const playSong = () => {
-		dispatch(playTrack(song));
+		handlePlay(song);
 	};
 
 	const handlePlayPause = () => {
@@ -45,9 +45,12 @@ const ArtisteSong = ({ song }) => {
 					<Flex align="center" gap={2}>
 						<Text fontSize="lg">{song?.title}</Text>
 						{isCurrentTrack && (
-							<Text color="accent.main" fontSize="xs" fontWeight={600}>
+							<Flex align="center" color="accent.main">
 								<BsSoundwave size={20} />
-							</Text>
+								<Text fontSize="xs" fontWeight={600} color="accent.main" ml={2}>
+									Playing
+								</Text>
+							</Flex>
 						)}
 					</Flex>
 					<Text color="zinc.400" fontSize="sm">
@@ -56,20 +59,18 @@ const ArtisteSong = ({ song }) => {
 				</Box>
 			</Flex>
 			<Flex align="center" gap={3} pr={3}>
-				<Button
-					onClick={playSong}
-					variant="unstyled"
-					color="accent.light"
-					p={0}
-					display="inline-flex"
-					alignItems="center"
-					justifyContent="center">
-					{isCurrentTrack && isPlaying ? (
-						<AiFillPauseCircle size={36} />
-					) : (
+				{isCurrentTrack && isPlaying ? null : (
+					<Button
+						onClick={playSong}
+						variant="unstyled"
+						color="accent.light"
+						p={0}
+						display="inline-flex"
+						alignItems="center"
+						justifyContent="center">
 						<AiFillPlayCircle size={36} />
-					)}
-				</Button>
+					</Button>
+				)}
 				<Text fontSize="sm" color="zinc.400">
 					{song?.duration.split(".").join(":")}
 				</Text>
