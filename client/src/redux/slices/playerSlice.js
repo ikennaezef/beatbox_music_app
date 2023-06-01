@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 	currentTrack: null,
@@ -12,6 +12,13 @@ export const playerSlice = createSlice({
 	name: "player",
 	initialState,
 	reducers: {
+		resetPlayer: (state, action) => {
+			state.currentTrack = null;
+			state.isPlaying = false;
+			state.currentIndex = 0;
+			state.trackList = [];
+			state.repeatStatus = "OFF";
+		},
 		setCurrentTrack: (state, action) => {
 			state.currentTrack = action.payload;
 		},
@@ -63,6 +70,7 @@ export const playerSlice = createSlice({
 });
 
 export const {
+	resetPlayer,
 	setCurrentTrack,
 	setPlaying,
 	playTrack,
