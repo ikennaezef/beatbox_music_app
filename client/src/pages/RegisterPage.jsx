@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import { client } from "../api";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../redux/slices/userSlice";
+import { resetPlayer } from "../redux/slices/playerSlice";
 
 const RegisterPage = () => {
 	const [error, setError] = useState(null);
@@ -46,6 +47,7 @@ const RegisterPage = () => {
 					password,
 				})
 				.then((res) => {
+					dispatch(resetPlayer());
 					dispatch(loginUser(res.data));
 					setLoading(false);
 				})
