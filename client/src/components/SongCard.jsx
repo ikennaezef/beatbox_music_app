@@ -1,5 +1,13 @@
 import React from "react";
-import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import {
+	Box,
+	Button,
+	Flex,
+	Heading,
+	Image,
+	Text,
+	useToast,
+} from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { fadeInUp } from "../theme/motionVariants";
@@ -8,23 +16,56 @@ import {
 	setPlaying,
 	setTrackList,
 } from "../redux/slices/playerSlice";
-import { AiFillPauseCircle, AiFillPlayCircle } from "react-icons/ai";
+import {
+	AiFillHeart,
+	AiFillPauseCircle,
+	AiFillPlayCircle,
+	AiOutlineHeart,
+} from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { client } from "../api";
+import { setUser } from "../redux/slices/userSlice";
 
 const SongCard = ({ song }) => {
 	const dispatch = useDispatch();
 	const { currentTrack, isPlaying } = useSelector((state) => state.player);
+	const { user, token } = useSelector((state) => state.user);
+
+	const toast = useToast();
+
 	const playSong = () => {
 		dispatch(setCurrentTrack(song));
 		dispatch(setTrackList({ list: [song] }));
 		dispatch(setPlaying(true));
 	};
 
+	const handleLike = async () => {
+		await client
+			.patch(`/songs/like/${song?._id}`, null, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			})
+			.then((res) => {
+				dispatch(setUser(res.data));
+				toast({
+					description: "Your favorites have been updated",
+					status: "success",
+				});
+			})
+			.catch((err) => {
+				toast({
+					description: "An error occured",
+					status: "error",
+				});
+			});
+	};
+
 	const isCurrentTrack = currentTrack?._id === song?._id;
+	const isFavorite = user?.favorites.includes(song._id);
 
 	return (
 		<Box
-			onClick={playSong}
-			cursor="pointer"
 			as={motion.div}
 			initial="initial"
 			animate="animate"
@@ -35,7 +76,13 @@ const SongCard = ({ song }) => {
 			pb={4}
 			overflow="hidden"
 			role="group">
-			<Box h="10rem" mb={4} overflow="hidden" position="relative">
+			<Box
+				onClick={playSong}
+				cursor="pointer"
+				h="10rem"
+				mb={4}
+				overflow="hidden"
+				position="relative">
 				<Image
 					src={song?.coverImage}
 					alt={song?.title}
@@ -73,15 +120,32 @@ const SongCard = ({ song }) => {
 					</Button>
 				</Box>
 			</Box>
-			<Box px={2}>
-				<Heading as="h5" fontSize="base" fontWeight={500}>
-					{song?.title}
-				</Heading>
-				<Text fontSize="sm" color="zinc.400" noOfLines={1}>
-					{" "}
-					{song?.artistes.join(", ")}{" "}
-				</Text>
-			</Box>
+			<Flex gap={2} justify="space-between">
+				<Box px={2}>
+					<Heading as="h5" fontSize="base" noOfLines={1} fontWeight={500}>
+						{song?.title}
+					</Heading>
+					<Link to={`/artiste/${song?.artistes[0]}`}>
+						<Text fontSize="sm" color="zinc.400" noOfLines={1}>
+							{" "}
+							{song?.artistes.join(", ")}{" "}
+						</Text>
+					</Link>
+				</Box>
+				{user && (
+					<Button
+						variant="unstyled"
+						_hover={{ color: "accent.transparent" }}
+						color={isFavorite ? "accent.main" : "#b1b1b1"}
+						onClick={handleLike}>
+						{isFavorite ? (
+							<AiFillHeart color="inherit" />
+						) : (
+							<AiOutlineHeart color="inherit" />
+						)}
+					</Button>
+				)}
+			</Flex>
 		</Box>
 	);
 };

@@ -13,7 +13,6 @@ import {
 	prevTrack,
 	setPlaying,
 } from "../../redux/slices/playerSlice";
-import { useNavigate } from "react-router-dom";
 import { client } from "../../api";
 import { setUser } from "../../redux/slices/userSlice";
 import VolumeControl from "./VolumeControl";

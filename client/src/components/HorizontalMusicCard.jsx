@@ -1,12 +1,13 @@
 import React from "react";
 import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { fadeInUp } from "../theme/motionVariants";
 import { useSelector } from "react-redux";
 
 const HorizontalMusicCard = ({ song, onPlay }) => {
 	const { currentTrack } = useSelector((state) => state.player);
+	const { user } = useSelector((state) => state.user);
 
 	return (
 		<Box
@@ -49,8 +50,12 @@ const HorizontalMusicCard = ({ song, onPlay }) => {
 					<Text fontSize="sm" color="zinc.400">
 						{song?.duration.split(".").join(":")}
 					</Text>
-					<Button variant="unstyled">
-						<AiOutlineHeart />{" "}
+					<Button variant="unstyled" color="zinc.300">
+						{user?.favorites.includes(song._id) ? (
+							<AiFillHeart color="inherit" />
+						) : (
+							<AiOutlineHeart color="#ddd" />
+						)}
 					</Button>
 				</Flex>
 			</Flex>
