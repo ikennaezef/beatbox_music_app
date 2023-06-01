@@ -71,7 +71,7 @@ const getAroundYou = async (req, res) => {
 };
 
 //@desc Like or unlike a song
-//@route PATCH /api/songs/:id
+//@route PATCH /api/songs/like/:id
 //@access private
 const likeSong = async (req, res) => {
 	try {
@@ -104,7 +104,14 @@ const likeSong = async (req, res) => {
 			return res.status(400).json({ message: "An error occured" });
 		}
 
-		res.status(200).json({ message: "DONE" });
+		const returnUser = {
+			id: savedUser.id,
+			username: savedUser.username,
+			favorites: savedUser.favorites,
+			playlists: savedUser.playlists,
+		};
+
+		res.status(200).json(returnUser);
 	} catch (error) {
 		return res.status(409).json({ message: error.message });
 	}

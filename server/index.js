@@ -25,7 +25,7 @@ connectDb();
 // });
 
 app.use("/api/songs/", songsRouter);
-app.use("/api/auth/", userRouter);
+app.use("/api/users/", userRouter);
 app.use("/api/artistes/", artisteRouter);
 
 const port = process.env.PORT || 6000;

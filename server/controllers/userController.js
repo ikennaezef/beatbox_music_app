@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
+import Song from "../models/Song.js";
 
 //@desc Login a user
 //@route POST /api/auth/login
@@ -85,4 +86,26 @@ const registerUser = async (req, res) => {
 	res.status(200).json({ user: returnedUser, token: accessToken });
 };
 
-export { loginUser, registerUser };
+//@desc Get a user's favorite songs
+//@route GET /api/songs/user/favorites
+//@access private
+const getUserFavoriteSongs = async (req, res) => {
+	const { id } = req.user;
+	const user = await User.findById(id);
+
+	if (!user) {
+		return res.status(404).json({ message: "User not found!" });
+	}
+
+	const userFavorites = await Promise.all(
+		user.favorites.map((id) => Song.findById(id))
+	);
+
+	if (!userFavorites) {
+		return res.status(404).json({ message: "Not found!" });
+	}
+
+	res.status(200).json(userFavorites);
+};
+
+export { loginUser, registerUser, getUserFavoriteSongs };
