@@ -1,19 +1,31 @@
 import React from "react";
 import { BiMusic } from "react-icons/bi";
-import { AiFillHeart, AiFillHome } from "react-icons/ai";
+import { AiFillHeart, AiFillHome, AiOutlineLogout } from "react-icons/ai";
 import { BsHeadphones } from "react-icons/bs";
 import { HiOutlineUserCircle, HiViewGrid } from "react-icons/hi";
-import { NavLink } from "react-router-dom";
-import { Box, Button, Divider, Flex, Heading } from "@chakra-ui/react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Box, Button, Divider, Flex, Heading, Text } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../redux/slices/userSlice";
+import { resetPlayer } from "../redux/slices/playerSlice";
 
 const Navbar = () => {
+	const { user } = useSelector((state) => state.user);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const handleLogout = () => {
+		dispatch(resetPlayer());
+		dispatch(logoutUser());
+		navigate("/auth/login");
+	};
 	return (
 		<Box
 			position="fixed"
 			top={0}
 			left={0}
 			zIndex={30}
-			minW="16rem"
+			minW={{ base: "full", md: "12rem", lg: "16rem" }}
 			minH="100vh"
 			borderRight="1px"
 			borderRightColor="zinc.600"
@@ -101,12 +113,43 @@ const Navbar = () => {
 						<span>Favorites</span>
 					</Button>
 				</Flex>
-				<Divider bg="zinc.950" mt={12} mb={4} />
+				<Divider bg="zinc.500" border="0" mt={12} h="1px" mb={4} />
 				<div>
-					<button className="font-medium inline-flex items-center space-x-6 text-zinc-400 py-3 px-4 w-full">
-						<HiOutlineUserCircle size={20} />
-						<span>Logout</span>
-					</button>
+					{user ? (
+						<Box p={3}>
+							<Flex align="center" gap={4} color="accent.light">
+								<HiOutlineUserCircle size={20} color="inherit" />
+								<Text color="inherit" fontSize="sm">
+									{user?.username}
+								</Text>
+							</Flex>
+							<Button
+								onClick={handleLogout}
+								mt={8}
+								variant="unstyled"
+								display="inline-flex"
+								alignItems="center"
+								fontWeight={400}
+								gap={3}>
+								{" "}
+								<AiOutlineLogout size={20} /> Logout
+							</Button>
+						</Box>
+					) : (
+						<Link to="/auth/login">
+							<Button
+								variant="unstyled"
+								rounded="base"
+								w="full"
+								border="1px"
+								borderColor="zinc.600"
+								fontSize="sm"
+								py={2}
+								px={5}>
+								Login
+							</Button>
+						</Link>
+					)}
 				</div>
 			</Flex>
 		</Box>

@@ -1,9 +1,18 @@
 import { Box, Flex, Heading } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { BiMusic } from "react-icons/bi";
-import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const AuthLayout = () => {
+	const { user } = useSelector((state) => state.user);
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (user) {
+			navigate("/home");
+		}
+	}, [user]);
 	return (
 		<main>
 			<Flex align="center" justify="center" bg="zinc.800" p={4} h="5rem">
