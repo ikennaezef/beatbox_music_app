@@ -14,11 +14,11 @@ const HomeLayout = () => {
 				templateColumns="repeat(10, 1fr)"
 				bg="blackAlpha.900"
 				color="#e3e3e3">
-				<GridItem colSpan={2} className="">
+				<GridItem colSpan={2}>
 					<Navbar />
 				</GridItem>
 
-				<GridItem colSpan={8} className="">
+				<GridItem colSpan={8} minH="100vh">
 					<Outlet />
 				</GridItem>
 				{currentTrack && <MusicPlayer />}

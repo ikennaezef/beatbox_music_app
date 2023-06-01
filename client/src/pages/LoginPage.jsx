@@ -42,7 +42,7 @@ const LoginPage = () => {
 		if (validateFields()) {
 			setLoading(true);
 			await client
-				.post("/auth/login", {
+				.post("/users/login", {
 					username,
 					password,
 				})

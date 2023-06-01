@@ -42,7 +42,7 @@ const RegisterPage = () => {
 		if (validateFields()) {
 			setLoading(true);
 			await client
-				.post("/auth/register", {
+				.post("/users/register", {
 					username,
 					password,
 				})
