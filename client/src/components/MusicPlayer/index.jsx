@@ -20,6 +20,7 @@ import TrackDetails from "./TrackDetails";
 import PlayControls from "./PlayControls";
 import LoginModal from "../LoginModal";
 import PlayingBar from "./PlayingBar";
+import { setModalMessage } from "../../redux/slices/modalSlice";
 
 const MusicPlayer = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -174,6 +175,9 @@ const MusicPlayer = () => {
 
 	const handleLike = () => {
 		if (!token) {
+			dispatch(
+				setModalMessage("Please login to save songs to your favorites.")
+			);
 			onOpen();
 		} else {
 			likeSong();

@@ -9,10 +9,12 @@ import {
 	Button,
 } from "@chakra-ui/react";
 import React from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const LoginModal = React.forwardRef((props, ref) => {
 	const navigate = useNavigate();
+	const { message } = useSelector((state) => state.modal);
 	return (
 		<AlertDialog
 			motionPreset="slideInBottom"
@@ -25,9 +27,7 @@ const LoginModal = React.forwardRef((props, ref) => {
 			<AlertDialogContent bg="zinc.200">
 				<AlertDialogHeader>Not Logged In</AlertDialogHeader>
 				<AlertDialogCloseButton />
-				<AlertDialogBody>
-					Please login to save songs to your favorites.
-				</AlertDialogBody>
+				<AlertDialogBody>{message}</AlertDialogBody>
 				<AlertDialogFooter>
 					<Button ref={ref} onClick={props.onClose}>
 						Cancel
