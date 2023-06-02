@@ -14,6 +14,7 @@ import { BsSoundwave } from "react-icons/bs";
 import LoginModal from "./LoginModal";
 import { client } from "../api";
 import { setUser } from "../redux/slices/userSlice";
+import { setModalMessage } from "../redux/slices/modalSlice";
 
 const ArtisteSong = ({ song, handlePlay }) => {
 	const dispatch = useDispatch();
@@ -53,6 +54,9 @@ const ArtisteSong = ({ song, handlePlay }) => {
 
 	const handleLike = () => {
 		if (!token) {
+			dispatch(
+				setModalMessage("Please login to save songs to your favorites.")
+			);
 			onOpen();
 		} else {
 			likeSong();
