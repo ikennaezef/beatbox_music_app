@@ -58,6 +58,18 @@ const getNewReleases = async (req, res) => {
 	res.status(200).json(shuffledSongs);
 };
 
+//@desc Get random songs
+//@route GET /api/songs/random
+//@access public
+const getRandom = async (req, res) => {
+	const songs = await Song.find({});
+
+	const shuffledSongs = songs.sort(() => (Math.random() > 0.5 ? 1 : -1));
+	const result = shuffledSongs.slice(-11, -1);
+
+	res.status(200).json(result);
+};
+
 //@desc Get the popular songs around you
 //@route GET /api/songs/popular
 //@access public
@@ -117,4 +129,11 @@ const likeSong = async (req, res) => {
 	}
 };
 
-export { getSongs, getTopSongs, getNewReleases, getAroundYou, likeSong };
+export {
+	getSongs,
+	getTopSongs,
+	getNewReleases,
+	getRandom,
+	getAroundYou,
+	likeSong,
+};

@@ -2,6 +2,7 @@ import express from "express";
 import {
 	getAroundYou,
 	getNewReleases,
+	getRandom,
 	getSongs,
 	getTopSongs,
 	likeSong,
@@ -13,6 +14,7 @@ const router = express.Router();
 router.get("/", getSongs);
 router.get("/top", getTopSongs);
 router.get("/releases", getNewReleases);
+router.get("/random", getRandom);
 router.get("/popular", getAroundYou);
 router.patch("/like/:id", verifyToken, likeSong);
 
