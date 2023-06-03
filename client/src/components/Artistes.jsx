@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Flex, Heading } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { AiFillPlayCircle, AiOutlineLoading } from "react-icons/ai";
 import ArtisteCard from "./ArtisteCard";
 import axios from "axios";
@@ -47,6 +47,10 @@ const Artistes = () => {
 				<Flex align="center" justify="center" color="accent.main" minH="20rem">
 					<AiOutlineLoading className="spin" size={36} />
 				</Flex>
+			) : error ? (
+				<Box my={2}>
+					<Text>Sorry, an error occured</Text>
+				</Box>
 			) : (
 				<Flex
 					align="stretch"
@@ -60,11 +64,6 @@ const Artistes = () => {
 						<ArtisteCard key={artiste._id} artiste={artiste} />
 					))}
 				</Flex>
-			)}
-			{error && (
-				<Box>
-					<Text>Sorry, an error occured</Text>
-				</Box>
 			)}
 		</Box>
 	);

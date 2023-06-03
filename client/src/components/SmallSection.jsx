@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AiFillPlayCircle, AiOutlineLoading } from "react-icons/ai";
 import SongCard from "./SongCard";
-import { Box, Button, Flex, Heading } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import axios from "axios";
 import { client } from "../api";
 import { Link } from "react-router-dom";
@@ -53,6 +53,10 @@ const SmallSection = ({ title, endpoint }) => {
 				<Flex align="center" color="accent.main" justify="center" minH="20rem">
 					<AiOutlineLoading color="inherit" className="spin" size={36} />
 				</Flex>
+			) : error ? (
+				<Box my={2}>
+					<Text>Sorry, an error occured</Text>
+				</Box>
 			) : (
 				<Flex
 					align="center"
