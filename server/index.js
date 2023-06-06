@@ -8,6 +8,7 @@ import { artistes, songs } from "./data.js";
 import Song from "./models/Song.js";
 import Artiste from "./models/Artiste.js";
 import { artisteRouter } from "./routes/artisteRoutes.js";
+import { playlistRouter } from "./routes/playlistRoutes.js";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ connectDb();
 app.use("/api/songs/", songsRouter);
 app.use("/api/users/", userRouter);
 app.use("/api/artistes/", artisteRouter);
+app.use("/api/playlists/", playlistRouter);
 
 const port = process.env.PORT || 6000;
 
