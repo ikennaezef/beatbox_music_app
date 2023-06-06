@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PlaylistCard from "../components/PlaylistCard";
-import { BiPlus } from "react-icons/bi";
 import { Box, Button, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import CreatePlaylistCard from "../components/CreatePlaylistCard";
+import { client } from "../api";
+import { AiOutlineLoading } from "react-icons/ai";
 
 const PlaylistsPage = () => {
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState(false);
+	const [playlists, setPlaylists] = useState([]);
+
+	const fetchPlaylists = async () => {
+		setLoading(true);
+		setError(false);
+		await client
+			.get("/playlists")
+			.then((res) => {
+				setLoading(false);
+				setPlaylists(res.data);
+				console.log(res.data);
+			})
+			.catch((err) => {
+				setLoading(false);
+				setError(true);
+			});
+	};
+
+	useEffect(() => {
+		fetchPlaylists();
+	}, []);
+
 	return (
 		<Box p={6} pb={32}>
 			<Box>
@@ -13,12 +38,19 @@ const PlaylistsPage = () => {
 				</Heading>
 				<Text>Here are some playlists curated by users.</Text>
 			</Box>
-			<Grid templateColumns="repeat(5, 1fr)" gap={5} mt={10}>
-				<CreatePlaylistCard />
-				{[1, 2, 3, 4, 5, 6, 7].map((song) => (
-					<PlaylistCard key={song.id} playlist={song} />
-				))}
-			</Grid>
+			{loading && playlists.length < 1 && (
+				<Flex align="center" justify="center" color="accent.main" minH="20rem">
+					<AiOutlineLoading className="spin" size={36} />
+				</Flex>
+			)}
+			{!loading && !error && (
+				<Grid templateColumns="repeat(5, 1fr)" gap={5} mt={10}>
+					<CreatePlaylistCard />
+					{playlists.map((playlist) => (
+						<PlaylistCard key={playlist?._id} playlist={playlist} />
+					))}
+				</Grid>
+			)}
 		</Box>
 	);
 };
