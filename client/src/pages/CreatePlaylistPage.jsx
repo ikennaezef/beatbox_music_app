@@ -103,7 +103,6 @@ const CreatePlaylistPage = () => {
 			})
 			.catch((err) => {
 				setCreatePlLoading(false);
-				console.log("ERR--->>>", err);
 				toast({
 					description: "An error occured!",
 					status: "error",
