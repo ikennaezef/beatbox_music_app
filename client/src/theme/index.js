@@ -1,4 +1,4 @@
-import { extendTheme, keyframes } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 
 const colors = {
 	zinc: {
@@ -12,11 +12,6 @@ const colors = {
 		800: "#27272a",
 		900: "#18181b",
 		950: "#09090b",
-	},
-	brand: {
-		900: "#1a365d",
-		800: "#153e75",
-		700: "#2a69ac",
 	},
 	accent: {
 		main: "#EE4950",

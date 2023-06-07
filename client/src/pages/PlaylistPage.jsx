@@ -27,7 +27,7 @@ const PlaylistPage = () => {
 
 	const dispatch = useDispatch();
 	const { user } = useSelector((state) => state.user);
-	const isUserPlaylist = user.id === data?.userId;
+	const isUserPlaylist = user?.id === data?.userId;
 
 	const fetchPlaylist = async () => {
 		setLoading(true);

@@ -27,18 +27,31 @@ const MusicPlayer = () => {
 	const modalRef = useRef();
 	const toast = useToast();
 	const dispatch = useDispatch();
-	const { currentTrack, repeatStatus, currentIndex, trackList } = useSelector(
-		(state) => state.player
-	);
+	const { currentTrack, repeatStatus, currentIndex, trackList, isPlaying } =
+		useSelector((state) => state.player);
 	const { user, token } = useSelector((state) => state.user);
 	const audioRef = useRef();
 
 	const isEndOfTracklist = currentIndex === trackList.length - 1;
 
 	const [songDetails, setSongDetails] = useState(null);
-	const [isPlaying, setIsPlaying] = useState(
+	const [audioPlaying, setAudioPlaying] = useState(
 		audioRef.current && audioRef.current.playing
 	);
+
+	useEffect(() => {
+		if (audioPlaying) {
+			dispatch(setPlaying(true));
+		} else {
+			dispatch(setPlaying(false));
+		}
+	}, [audioPlaying]);
+
+	useEffect(() => {
+		if (isPlaying) {
+			audioRef.current.play();
+		}
+	}, [isPlaying]);
 
 	useEffect(() => {
 		setSongDetails((prev) => {
@@ -106,6 +119,7 @@ const MusicPlayer = () => {
 	useEffect(() => {
 		audioRef.current.currentTime = 0;
 		audioRef?.current.play();
+		dispatch(setPlaying(true));
 	}, [currentTrack.src]);
 
 	const handleNextSong = () => {
@@ -239,8 +253,8 @@ const MusicPlayer = () => {
 						<audio
 							ref={audioRef}
 							src={currentTrack?.songUrl}
-							onPause={() => setIsPlaying(false)}
-							onPlay={() => setIsPlaying(true)}
+							onPause={() => setAudioPlaying(false)}
+							onPlay={() => setAudioPlaying(true)}
 							onEnded={handleEnded}
 							onTimeUpdate={() => {
 								setSongDetails((prev) => ({

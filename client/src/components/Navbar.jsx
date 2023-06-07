@@ -3,7 +3,7 @@ import { BiMusic } from "react-icons/bi";
 import { AiFillHeart, AiFillHome, AiOutlineLogout } from "react-icons/ai";
 import { BsHeadphones } from "react-icons/bs";
 import { HiOutlineUserCircle, HiViewGrid } from "react-icons/hi";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Box, Button, Divider, Flex, Heading, Text } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../redux/slices/userSlice";
@@ -19,6 +19,12 @@ const Navbar = () => {
 		dispatch(logoutUser());
 		navigate("/auth/login");
 	};
+
+	const gotoLogin = () => {
+		dispatch(resetPlayer());
+		navigate("/auth/login");
+	};
+
 	return (
 		<Box
 			position="fixed"
@@ -98,20 +104,26 @@ const Navbar = () => {
 							</Button>
 						)}
 					</NavLink>
-					<Button
-						bg="transparent"
-						_hover={{ bg: "accent.transparent" }}
-						rounded="base"
-						display="inline-flex"
-						alignItems="center"
-						justifyContent="flex-start"
-						gap={6}
-						w="full"
-						py={6}
-						px={4}>
-						<AiFillHeart size={20} />
-						<span>Favorites</span>
-					</Button>
+					<NavLink to="/favorites">
+						{({ isActive, isPending }) => (
+							<Button
+								bg={isActive ? "accent.main" : "transparent"}
+								_hover={
+									isActive ? { opacity: 0.8 } : { bg: "accent.transparent" }
+								}
+								rounded="base"
+								display="inline-flex"
+								alignItems="center"
+								justifyContent="flex-start"
+								gap={6}
+								w="full"
+								py={6}
+								px={4}>
+								<AiFillHeart size={20} />
+								<span>Favorites</span>
+							</Button>
+						)}
+					</NavLink>
 				</Flex>
 				<Divider bg="zinc.500" border="0" mt={12} h="1px" mb={4} />
 				<div>
@@ -136,19 +148,18 @@ const Navbar = () => {
 							</Button>
 						</Box>
 					) : (
-						<Link to="/auth/login">
-							<Button
-								variant="unstyled"
-								rounded="base"
-								w="full"
-								border="1px"
-								borderColor="zinc.600"
-								fontSize="sm"
-								py={2}
-								px={5}>
-								Login
-							</Button>
-						</Link>
+						<Button
+							onClick={gotoLogin}
+							variant="unstyled"
+							rounded="base"
+							w="full"
+							border="1px"
+							borderColor="zinc.600"
+							fontSize="sm"
+							py={2}
+							px={5}>
+							Login
+						</Button>
 					)}
 				</div>
 			</Flex>
