@@ -238,8 +238,10 @@ const MusicPlayer = () => {
 				<Flex align="center" justify="flex-end" gap={{ base: 0, md: 4 }}>
 					<Button
 						variant="unstyled"
-						fontSize={{ base: 20, md: 24 }}
+						fontSize={{ base: 18, md: 24 }}
 						p={0}
+						h={{ base: 8, md: 12 }}
+						minW={6}
 						display="inline-flex"
 						alignItems="center"
 						justifyContent="center"

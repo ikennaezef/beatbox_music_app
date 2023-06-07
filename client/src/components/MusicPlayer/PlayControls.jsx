@@ -20,7 +20,11 @@ const PlayControls = ({
 }) => {
 	const dispatch = useDispatch();
 	return (
-		<Flex align="center" justify="center" gap={{ base: 2, md: 6 }}>
+		<Flex
+			align="center"
+			justify="center"
+			gap={{ base: 1, md: 6 }}
+			ml={{ base: 8, md: 0 }}>
 			<Hide below="md">
 				<Button
 					color="zinc.600"
@@ -34,28 +38,32 @@ const PlayControls = ({
 			<Button
 				onClick={onPrevious}
 				variant="unstyled"
+				p={0}
+				h={6}
+				minW={6}
+				fontSize={{ base: 14, md: 24 }}
 				display="inline-flex"
 				alignItems="center"
 				justifyContent="center">
-				<TbPlayerTrackPrevFilled size={16} />
+				<TbPlayerTrackPrevFilled />
 			</Button>
 			<Button
 				onClick={onPlay}
 				variant="unstyled"
 				color="accent.main"
 				p={0}
+				fontSize={{ base: 36, md: 48 }}
 				display="inline-flex"
 				alignItems="center"
 				justifyContent="center">
-				{!isPlaying ? (
-					<AiFillPlayCircle size={46} />
-				) : (
-					<AiFillPauseCircle size={46} />
-				)}
+				{!isPlaying ? <AiFillPlayCircle /> : <AiFillPauseCircle />}
 			</Button>
 			<Button
 				onClick={onNext}
 				variant="unstyled"
+				p={0}
+				h={6}
+				minW={6}
 				display="inline-flex"
 				alignItems="center"
 				justifyContent="center">

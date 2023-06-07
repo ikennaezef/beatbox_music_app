@@ -60,7 +60,10 @@ const LoginPage = () => {
 
 	return (
 		<Box minH="calc(100vh - 5rem)" maxW="2xl" mx="auto" p={6}>
-			<Box bg="zinc.900" rounded="base" p={10}>
+			<Box
+				bg={{ base: "zinc.950", md: "zinc.900" }}
+				rounded="base"
+				p={{ base: 2, md: 10 }}>
 				<Box mb={8}>
 					<Heading fontSize="2xl" color="zinc.200">
 						Login

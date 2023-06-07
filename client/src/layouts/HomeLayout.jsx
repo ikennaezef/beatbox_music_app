@@ -17,7 +17,7 @@ const HomeLayout = () => {
 					<Navbar />
 				</GridItem>
 
-				<GridItem colSpan={8} minH="100vh">
+				<GridItem colSpan={8} minH={{ base: "97vh", md: "100vh" }}>
 					<Outlet />
 				</GridItem>
 				{currentTrack && <MusicPlayer />}

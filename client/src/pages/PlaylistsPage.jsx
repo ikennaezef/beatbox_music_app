@@ -4,6 +4,7 @@ import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import CreatePlaylistCard from "../components/CreatePlaylistCard";
 import { client } from "../api";
 import { AiOutlineLoading } from "react-icons/ai";
+import { MdErrorOutline } from "react-icons/md";
 
 const PlaylistsPage = () => {
 	const [loading, setLoading] = useState(false);
@@ -29,13 +30,32 @@ const PlaylistsPage = () => {
 		fetchPlaylists();
 	}, []);
 
+	if (error) {
+		return (
+			<Flex align="center" justify="center" minH="100vh">
+				<Flex direction="column" align="center" color="accent.light">
+					<MdErrorOutline color="inherit" size={32} />
+					<Text color="zinc.400" textAlign="center" mt={2}>
+						An error occured while fetching playlists.
+					</Text>
+				</Flex>
+			</Flex>
+		);
+	}
+
 	return (
-		<Box p={6} pb={32}>
+		<Box p={6} pb={32} pt={{ base: 20, md: 6 }}>
 			<Box>
-				<Heading as="h2" fontSize="2xl" mb={2} fontWeight="semibold">
+				<Heading
+					as="h2"
+					fontSize={{ base: "lg", md: "2xl" }}
+					fontWeight="semibold"
+					mb={{ base: 1, md: 3 }}>
 					Playlists
 				</Heading>
-				<Text>Here are some playlists curated by users.</Text>
+				<Text color="zinc.400" fontSize="sm">
+					Here are some playlists curated by users.
+				</Text>
 			</Box>
 			{loading && playlists.length < 1 && (
 				<Flex align="center" justify="center" color="accent.main" minH="20rem">
@@ -43,7 +63,10 @@ const PlaylistsPage = () => {
 				</Flex>
 			)}
 			{!loading && !error && (
-				<Grid templateColumns="repeat(5, 1fr)" gap={5} mt={10}>
+				<Grid
+					templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(5, 1fr)" }}
+					gap={5}
+					mt={10}>
 					<CreatePlaylistCard />
 					{playlists.map((playlist) => (
 						<PlaylistCard key={playlist?._id} playlist={playlist} />

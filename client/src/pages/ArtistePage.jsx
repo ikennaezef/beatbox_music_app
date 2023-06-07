@@ -74,9 +74,14 @@ const ArtistePage = () => {
 	}
 
 	return (
-		<Box minH="100vh" p={4} pb={32}>
+		<Box minH="100vh" p={4} pb={32} pt={{ base: 16, md: 4 }}>
 			<Box pt={6}>
-				<Flex align="flex-start" justify="flex-start" gap={5}>
+				<Flex
+					maxW="full"
+					direction={{ base: "column", md: "row" }}
+					align="flex-start"
+					justify="flex-start"
+					gap={5}>
 					<Box minWidth="14rem" h="14rem">
 						<Image
 							src={artiste?.image}
@@ -90,20 +95,26 @@ const ArtistePage = () => {
 					<Box>
 						<Heading
 							as="h1"
-							fontSize="3xl"
+							fontSize={{ base: "lg", md: "3xl" }}
 							color="accent.light"
 							mb={4}
 							fontWeight={600}>
 							{artiste?.name}
 						</Heading>
-						<Text fontSize="md" color="zinc.300">
+						<Text
+							fontSize={{ base: "sm", md: "md" }}
+							maxW="full"
+							color="zinc.300">
 							{artiste?.bio}
 						</Text>
 					</Box>
 				</Flex>
 				<Box mt={12}>
 					<Flex align="center" gap={6} mb={4}>
-						<Heading as="h3" fontSize="xl" fontWeight={600}>
+						<Heading
+							as="h3"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight={600}>
 							Songs
 						</Heading>
 						<Button
@@ -112,6 +123,7 @@ const ArtistePage = () => {
 							alignItems="center"
 							variant="unstyled"
 							bg="accent.light"
+							fontSize={{ base: "sm", md: "md" }}
 							color="white"
 							rounded="2rem"
 							py={1}

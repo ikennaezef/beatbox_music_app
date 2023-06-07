@@ -24,18 +24,26 @@ const LoginModal = React.forwardRef((props, ref) => {
 			isCentered>
 			<AlertDialogOverlay />
 
-			<AlertDialogContent bg="zinc.200">
-				<AlertDialogHeader>Not Logged In</AlertDialogHeader>
+			<AlertDialogContent bg="zinc.200" mx={8}>
+				<AlertDialogHeader fontSize={{ base: "lg", md: "xl" }}>
+					Not Logged In
+				</AlertDialogHeader>
 				<AlertDialogCloseButton />
-				<AlertDialogBody>{message}</AlertDialogBody>
+				<AlertDialogBody fontSize={{ base: "sm", md: "md" }}>
+					{message}
+				</AlertDialogBody>
 				<AlertDialogFooter>
-					<Button ref={ref} onClick={props?.onClose}>
+					<Button
+						ref={ref}
+						onClick={props?.onClose}
+						fontSize={{ base: "sm", md: "md" }}>
 						Cancel
 					</Button>
 					<Button
 						colorScheme="red"
 						ml={3}
-						onClick={() => navigate("/auth/login")}>
+						onClick={() => navigate("/auth/login")}
+						fontSize={{ base: "sm", md: "md" }}>
 						Login
 					</Button>
 				</AlertDialogFooter>

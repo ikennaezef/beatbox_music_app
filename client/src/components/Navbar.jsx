@@ -1,13 +1,9 @@
 import { BiMenuAltRight, BiMusic } from "react-icons/bi";
-import {
-	AiFillHeart,
-	AiFillHome,
-	AiOutlineClose,
-	AiOutlineLogout,
-} from "react-icons/ai";
+import { AiFillHeart, AiFillHome, AiOutlineLogout } from "react-icons/ai";
 import { BsHeadphones } from "react-icons/bs";
+import { TiTimes } from "react-icons/ti";
 import { HiOutlineUserCircle, HiViewGrid } from "react-icons/hi";
-import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import {
 	Box,
 	Button,
@@ -36,25 +32,32 @@ const MobileNav = () => {
 	};
 
 	return (
-		<Box position="fixed" top={0} left={0} zIndex={30} w="full" bg="zinc.950">
+		<Box
+			position="fixed"
+			top={0}
+			left={0}
+			zIndex={30}
+			w="full"
+			h={navIsOpen ? "100vh" : undefined}
+			bg="zinc.950">
 			<Flex align="center" justify="space-between" p={2}>
 				<Flex color="accent.main" align="center" gap={4}>
 					<BiMusic color="inherit" size={30} />
-					<Heading as="h1" fontWeight="semibold" fontSize="2xl">
-						BeatBox
-					</Heading>
+					<Link to="/home">
+						<Heading as="h1" fontWeight="semibold" fontSize="2xl">
+							BeatBox
+						</Heading>
+					</Link>
 				</Flex>
 				<Button variant="unstyled" onClick={toggleNav}>
-					{navIsOpen ? (
-						<AiOutlineClose size={24} />
-					) : (
-						<BiMenuAltRight size={24} />
-					)}
+					{navIsOpen ? <TiTimes size={24} /> : <BiMenuAltRight size={24} />}
 				</Button>
 			</Flex>
-			<Box px={4} pb={2}>
-				{navIsOpen && <NavContent />}
-			</Box>
+			{navIsOpen && (
+				<Box px={4} pb={2} h="full">
+					<NavContent />
+				</Box>
+			)}
 		</Box>
 	);
 };
@@ -100,7 +103,7 @@ const NavContent = () => {
 		navigate("/auth/login");
 	};
 	return (
-		<>
+		<Box>
 			<Flex direction="column" gap={2} mt={12}>
 				<NavLink to="/home">
 					{({ isActive }) => (
@@ -220,7 +223,7 @@ const NavContent = () => {
 					</Button>
 				)}
 			</Box>
-		</>
+		</Box>
 	);
 };
 

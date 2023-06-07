@@ -9,7 +9,7 @@ const PlaylistCard = ({ playlist }) => {
 			<Box
 				rounded="md"
 				bg="zinc.900"
-				minW="10rem"
+				minW={{ base: "8rem", md: "10rem" }}
 				maxW="12rem"
 				p={2}
 				pb={4}
@@ -28,10 +28,17 @@ const PlaylistCard = ({ playlist }) => {
 					minH="100px"
 				/>
 				<Box>
-					<Heading fontWeight={500} mb={2} fontSize="md" noOfLines={1}>
+					<Heading
+						fontWeight={500}
+						mb={2}
+						fontSize={{ base: "sm", md: "md" }}
+						noOfLines={1}>
 						{playlist?.title}
 					</Heading>
-					<Text fontSize="sm" color="zinc.500" noOfLines={1}>
+					<Text
+						fontSize={{ base: "xs", md: "sm" }}
+						color="zinc.500"
+						noOfLines={1}>
 						{playlist?.userName}
 					</Text>
 				</Box>

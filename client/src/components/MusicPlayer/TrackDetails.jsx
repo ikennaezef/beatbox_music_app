@@ -12,8 +12,15 @@ const TrackDetails = ({ track }) => {
 				rounded="lg"
 			/>
 			<Flex direction="column" align="flex-start">
-				<Text fontSize={{ base: "sm", md: "md" }}>{track?.title}</Text>
-				<Text fontSize={{ base: "xs", md: "sm" }} color="zinc.500">
+				<Text
+					fontSize={{ base: "sm", md: "md" }}
+					noOfLines={{ base: 1, md: undefined }}>
+					{track?.title}
+				</Text>
+				<Text
+					fontSize={{ base: "xs", md: "sm" }}
+					color="zinc.500"
+					noOfLines={{ base: 1, md: undefined }}>
 					{track?.artistes.join(", ")}
 				</Text>
 			</Flex>

@@ -78,10 +78,14 @@ const PlaylistPage = () => {
 	}
 
 	return (
-		<Box minH="100vh" p={4} pb={32}>
+		<Box minH="100vh" p={{ base: 2, md: 4 }} pb={32} pt={{ base: 12, md: 4 }}>
 			<Box pt={6}>
-				<Flex align="flex-start" justify="flex-start" gap={5}>
-					<Box minWidth="14rem" h="14rem">
+				<Flex
+					direction={{ base: "column", md: "row" }}
+					align="flex-start"
+					justify="flex-start"
+					gap={5}>
+					<Box minWidth={{ base: "10rem", md: "14rem" }} h="14rem">
 						<Image
 							src="https://firebasestorage.googleapis.com/v0/b/socialstream-ba300.appspot.com/o/music_app_files%2Fplaylist_cover.jpg?alt=media&token=546adcad-e9c3-402f-8a57-b7ba252100ec"
 							alt={data?.title}
@@ -102,9 +106,9 @@ const PlaylistPage = () => {
 						</Heading>
 						<Heading
 							as="h1"
-							fontSize="3xl"
+							fontSize={{ base: "xl", md: "3xl" }}
 							color="zinc.100"
-							mb={4}
+							mb={{ base: 1, md: 4 }}
 							fontWeight={600}>
 							{data?.title}
 						</Heading>
@@ -127,7 +131,10 @@ const PlaylistPage = () => {
 				</Flex>
 				<Box mt={12}>
 					<Flex align="center" gap={6} mb={4}>
-						<Heading as="h3" fontSize="xl" fontWeight={600}>
+						<Heading
+							as="h3"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight={600}>
 							{data?.songs?.length} Songs
 						</Heading>
 						<Button
@@ -138,6 +145,7 @@ const PlaylistPage = () => {
 							bg="accent.light"
 							color="white"
 							rounded="2rem"
+							fontSize={{ base: "sm", md: "md" }}
 							py={1}
 							px={4}
 							leftIcon={<BsFillPlayFill size={20} />}>

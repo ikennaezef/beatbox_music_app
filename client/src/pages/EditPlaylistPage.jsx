@@ -157,7 +157,7 @@ const EditPlaylistPage = () => {
 	};
 
 	return (
-		<Box p={4} pb={32}>
+		<Box p={4} pb={32} pt={{ base: 24, md: 4 }}>
 			<Flex align="center" justify="space-between" mb={6}>
 				<Heading fontSize="2xl" fontWeight="semibold">
 					Edit Playlist
@@ -189,7 +189,11 @@ const EditPlaylistPage = () => {
 				)}
 				{!fetchPlaylistStatus.loading && !fetchPlaylistStatus.error && (
 					<>
-						<Flex justify="space-between" mb={6} gap={6}>
+						<Flex
+							direction={{ base: "column", md: "row" }}
+							justify="space-between"
+							mb={6}
+							gap={6}>
 							<FormControl isRequired>
 								<FormLabel fontSize="xs" color="zinc.400">
 									Playlist Name
@@ -232,7 +236,10 @@ const EditPlaylistPage = () => {
 						</Heading>
 						<Divider w="full" h="1px" border="0" bg="zinc.600" my={3} />
 
-						<SimpleGrid templateColumns="repeat(2, 1fr)" gap={3} mt={2}>
+						<SimpleGrid
+							templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
+							gap={3}
+							mt={2}>
 							{playlistSongs?.map((song) => (
 								<PlaylistSong
 									key={song?._id}
@@ -287,7 +294,10 @@ const EditPlaylistPage = () => {
 					</Box>
 				)}
 				{!otherSongs.loading && !otherSongs.error && (
-					<SimpleGrid templateColumns="repeat(2, 1fr)" gap={3} mt={2}>
+					<SimpleGrid
+						templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
+						gap={3}
+						mt={2}>
 						{otherSongs?.data?.map((song) => (
 							<PlaylistSong
 								key={song?._id}

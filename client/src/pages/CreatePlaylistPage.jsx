@@ -152,7 +152,7 @@ const CreatePlaylistPage = () => {
 	};
 
 	return (
-		<Box p={6} pb={32} minH="100vh">
+		<Box p={6} pb={32} minH="100vh" pt={{ base: 20, md: 6 }}>
 			<Flex align="center" justify="space-between" mb={6}>
 				<Heading fontSize="2xl" fontWeight="semibold">
 					Create a Playlist
@@ -186,7 +186,10 @@ const CreatePlaylistPage = () => {
 				</FormControl>
 			</Box>
 			<Box pt={6}>
-				<Flex justify="space-between" gap={6}>
+				<Flex
+					direction={{ base: "column", md: "row" }}
+					justify="space-between"
+					gap={6}>
 					<FormControl isRequired>
 						<FormLabel fontSize="xs" color="zinc.400">
 							Playlist Name
@@ -247,7 +250,10 @@ const CreatePlaylistPage = () => {
 								From Your favorites
 							</Heading>
 							<Divider h="1px" border={0} bg="gray.800" />
-							<SimpleGrid templateColumns="repeat(2, 1fr)" gap={3} mt={2}>
+							<SimpleGrid
+								templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
+								gap={3}
+								mt={2}>
 								{favorites?.map((song) => (
 									<PlaylistSong
 										key={song?._id}
@@ -292,7 +298,10 @@ const CreatePlaylistPage = () => {
 						</Box>
 					) : (
 						<>
-							<SimpleGrid templateColumns="repeat(2, 1fr)" gap={3} mt={2}>
+							<SimpleGrid
+								templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
+								gap={3}
+								mt={2}>
 								{otherSongs?.map((song) => (
 									<PlaylistSong
 										key={song?._id}

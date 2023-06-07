@@ -29,9 +29,12 @@ const ArtistesPage = () => {
 	}, []);
 
 	return (
-		<Box p={6} pb={32} minH="100vh">
+		<Box p={6} pb={32} minH="100vh" pt={{ base: 20, md: 6 }}>
 			<Box mb={6}>
-				<Heading fontSize="2xl" fontWeight="semibold" mb={3}>
+				<Heading
+					fontSize={{ base: "xl", md: "2xl" }}
+					fontWeight="semibold"
+					mb={{ base: 1, md: 3 }}>
 					Artistes
 				</Heading>
 				<Text fontSize="sm" color="zinc.400">
@@ -43,7 +46,9 @@ const ArtistesPage = () => {
 					<AiOutlineLoading className="spin" size={36} />
 				</Flex>
 			)}
-			<Grid templateColumns="repeat(5, 1fr)" gap={6}>
+			<Grid
+				templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(5, 1fr)" }}
+				gap={6}>
 				{artistes.map((artiste) => (
 					<ArtisteCard key={artiste._id} artiste={artiste} />
 				))}

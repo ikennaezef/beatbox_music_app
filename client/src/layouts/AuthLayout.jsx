@@ -15,15 +15,24 @@ const AuthLayout = () => {
 	}, [user]);
 	return (
 		<main>
-			<Flex align="center" justify="center" bg="zinc.800" p={4} h="5rem">
-				<Flex align="center" color="accent.main" justify="center" gap={2}>
+			<Flex
+				align="center"
+				justify="flex-start"
+				bg="zinc.800"
+				p={4}
+				pl={6}
+				h={{ base: "full", md: "5rem" }}>
+				<Flex align="center" color="accent.main" justify="flex-start" gap={2}>
 					<BiMusic size={30} />
-					<Heading fontWeight="semibold" color="gray.200" fontSize="2xl">
+					<Heading
+						fontWeight="semibold"
+						color="gray.200"
+						fontSize={{ base: "lg", md: "2xl" }}>
 						BeatBox
 					</Heading>
 				</Flex>
 			</Flex>
-			<Box bg="zinc.950" h="full">
+			<Box bg="zinc.950" h="full" minH="91vh">
 				<Outlet />
 			</Box>
 		</main>

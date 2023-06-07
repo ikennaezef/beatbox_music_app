@@ -5,6 +5,7 @@ html {
 	font-family: "Inter", sans-serif;
 	/* background-color: #212121; */
 	color: #e3e3e3;
+	position: relative;
 }
 
 h1,
