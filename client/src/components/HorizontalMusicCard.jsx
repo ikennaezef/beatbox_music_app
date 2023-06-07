@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { motion } from "framer-motion";
@@ -42,16 +41,16 @@ const HorizontalMusicCard = ({ song, onPlay }) => {
 							{song?.title}
 						</Heading>
 						<Text fontSize="xs" noOfLines={1} color="zinc.400">
-							{song?.artistes.join(", ")}
+							{song?.artistes?.join(", ")}
 						</Text>
 					</Box>
 				</Flex>
 				<Flex align="center" gap={3}>
 					<Text fontSize="sm" color="zinc.400">
-						{song?.duration.split(".").join(":")}
+						{song?.duration?.split(".")?.join(":")}
 					</Text>
 					<Button variant="unstyled" color="zinc.300">
-						{user?.favorites.includes(song._id) ? (
+						{user?.favorites?.includes(song._id) ? (
 							<AiFillHeart color="inherit" />
 						) : (
 							<AiOutlineHeart color="#ddd" />

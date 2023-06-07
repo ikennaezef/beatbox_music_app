@@ -1,3 +1,4 @@
+import React from "react";
 import {
 	AlertDialog,
 	AlertDialogBody,
@@ -8,7 +9,6 @@ import {
 	AlertDialogOverlay,
 	Button,
 } from "@chakra-ui/react";
-import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -19,8 +19,8 @@ const LoginModal = React.forwardRef((props, ref) => {
 		<AlertDialog
 			motionPreset="slideInBottom"
 			leastDestructiveRef={ref}
-			onClose={props.onClose}
-			isOpen={props.isOpen}
+			onClose={props?.onClose}
+			isOpen={props?.isOpen}
 			isCentered>
 			<AlertDialogOverlay />
 
@@ -29,7 +29,7 @@ const LoginModal = React.forwardRef((props, ref) => {
 				<AlertDialogCloseButton />
 				<AlertDialogBody>{message}</AlertDialogBody>
 				<AlertDialogFooter>
-					<Button ref={ref} onClick={props.onClose}>
+					<Button ref={ref} onClick={props?.onClose}>
 						Cancel
 					</Button>
 					<Button
@@ -43,5 +43,7 @@ const LoginModal = React.forwardRef((props, ref) => {
 		</AlertDialog>
 	);
 });
+
+LoginModal.displayName = "LoginModal";
 
 export default LoginModal;

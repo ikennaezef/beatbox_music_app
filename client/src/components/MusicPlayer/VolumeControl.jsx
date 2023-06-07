@@ -6,7 +6,6 @@ import {
 	SliderThumb,
 	SliderTrack,
 } from "@chakra-ui/react";
-import React from "react";
 import { BsFillVolumeMuteFill, BsFillVolumeUpFill } from "react-icons/bs";
 
 const VolumeControl = ({ onToggle, onChange, volume }) => {

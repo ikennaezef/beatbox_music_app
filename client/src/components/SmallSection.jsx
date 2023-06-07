@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AiFillPlayCircle, AiOutlineLoading } from "react-icons/ai";
 import SongCard from "./SongCard";
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
-import axios from "axios";
 import { client } from "../api";
 import { Link } from "react-router-dom";
 
@@ -20,7 +19,7 @@ const SmallSection = ({ title, endpoint }) => {
 				setData(res.data);
 				setLoading(false);
 			})
-			.catch((err) => {
+			.catch(() => {
 				setError(true);
 				setLoading(false);
 			});

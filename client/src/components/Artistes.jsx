@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
-import { AiFillPlayCircle, AiOutlineLoading } from "react-icons/ai";
+import { AiOutlineLoading } from "react-icons/ai";
 import ArtisteCard from "./ArtisteCard";
-import axios from "axios";
+import { client } from "../api";
 import { Link } from "react-router-dom";
 
 const Artistes = () => {
@@ -13,13 +13,13 @@ const Artistes = () => {
 	const fetchArtistes = async () => {
 		setLoading(true);
 		setError(false);
-		await axios
+		await client
 			.get("http://localhost:3001/api/artistes/top")
 			.then((res) => {
 				setArtistes(res.data);
 				setLoading(false);
 			})
-			.catch((err) => {
+			.catch(() => {
 				setError(true);
 				setLoading(false);
 			});

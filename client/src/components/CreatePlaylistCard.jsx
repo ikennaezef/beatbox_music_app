@@ -1,5 +1,5 @@
 import { Button, Flex, Text, useDisclosure } from "@chakra-ui/react";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { BiPlus } from "react-icons/bi";
 import LoginModal from "./LoginModal";
 import { useDispatch, useSelector } from "react-redux";

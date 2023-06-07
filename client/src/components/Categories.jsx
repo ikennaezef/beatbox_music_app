@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Flex, Heading, Image, SimpleGrid } from "@chakra-ui/react";
 
 const categories = [

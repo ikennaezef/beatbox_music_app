@@ -1,4 +1,3 @@
-import React from "react";
 import HomeHero from "../components/HomeHero";
 import SmallSection from "../components/SmallSection";
 import TopCharts from "../components/TopCharts";

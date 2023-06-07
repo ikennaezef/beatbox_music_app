@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PlaylistCard from "../components/PlaylistCard";
-import { Box, Button, Flex, Grid, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import CreatePlaylistCard from "../components/CreatePlaylistCard";
 import { client } from "../api";
 import { AiOutlineLoading } from "react-icons/ai";
@@ -19,7 +19,7 @@ const PlaylistsPage = () => {
 				setLoading(false);
 				setPlaylists(res.data);
 			})
-			.catch((err) => {
+			.catch(() => {
 				setLoading(false);
 				setError(true);
 			});

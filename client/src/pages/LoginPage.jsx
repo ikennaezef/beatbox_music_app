@@ -137,7 +137,7 @@ const LoginPage = () => {
 						</Link>
 					</Box>
 					<Text fontSize="sm" color="zinc.400">
-						Don't have an account yet?{" "}
+						{"Don't have an account yet?"}{" "}
 						<Link to="/auth/register">
 							{" "}
 							<Text as="span" color="accent.main">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
 	Box,
@@ -7,22 +7,19 @@ import {
 	Flex,
 	Heading,
 	Image,
-	Skeleton,
-	SkeletonText,
 	Text,
 } from "@chakra-ui/react";
 import { client } from "../api";
 import ArtisteSong from "../components/ArtisteSong";
 import { BsFillPlayFill } from "react-icons/bs";
 import { MdErrorOutline } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { playTrack, setTrackList } from "../redux/slices/playerSlice";
 import LoadingSkeleton from "../components/LoadingSkeleton";
 
 const ArtistePage = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
-	const { trackList } = useSelector((state) => state.player);
 
 	const [artiste, setArtiste] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -37,7 +34,7 @@ const ArtistePage = () => {
 				setArtiste(res.data);
 				setLoading(false);
 			})
-			.catch((err) => {
+			.catch(() => {
 				setError(true);
 				setLoading(false);
 			});

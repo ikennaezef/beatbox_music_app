@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Flex, Heading, Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { client } from "../api";
@@ -27,7 +27,7 @@ const FavoritesPage = () => {
 				setLoading(false);
 				setFavorites(res.data);
 			})
-			.catch((err) => {
+			.catch(() => {
 				setLoading(false);
 				setError(true);
 			});
@@ -88,7 +88,7 @@ const FavoritesPage = () => {
 				))}
 			</Flex>
 			{!loading && !error && favorites.length < 1 && (
-				<Text>You haven't liked any songs yet...</Text>
+				<Text>{"You haven't liked any songs yet..."}</Text>
 			)}
 		</Box>
 	);

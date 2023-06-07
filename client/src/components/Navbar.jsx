@@ -1,4 +1,3 @@
-import React from "react";
 import { BiMusic } from "react-icons/bi";
 import { AiFillHeart, AiFillHome, AiOutlineLogout } from "react-icons/ai";
 import { BsHeadphones } from "react-icons/bs";
@@ -45,7 +44,7 @@ const Navbar = () => {
 				</Flex>
 				<Flex direction="column" gap={2} mt={12}>
 					<NavLink to="/home">
-						{({ isActive, isPending }) => (
+						{({ isActive }) => (
 							<Button
 								bg={isActive ? "accent.main" : "transparent"}
 								_hover={
@@ -65,7 +64,7 @@ const Navbar = () => {
 						)}
 					</NavLink>
 					<NavLink to="/library">
-						{({ isActive, isPending }) => (
+						{({ isActive }) => (
 							<Button
 								bg={isActive ? "accent.main" : "transparent"}
 								_hover={
@@ -85,7 +84,7 @@ const Navbar = () => {
 						)}
 					</NavLink>
 					<NavLink to="/playlists">
-						{({ isActive, isPending }) => (
+						{({ isActive }) => (
 							<Button
 								bg={isActive ? "accent.main" : "transparent"}
 								_hover={
@@ -105,7 +104,7 @@ const Navbar = () => {
 						)}
 					</NavLink>
 					<NavLink to="/favorites">
-						{({ isActive, isPending }) => (
+						{({ isActive }) => (
 							<Button
 								bg={isActive ? "accent.main" : "transparent"}
 								_hover={

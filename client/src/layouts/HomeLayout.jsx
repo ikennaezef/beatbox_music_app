@@ -1,7 +1,6 @@
-import React from "react";
 import Navbar from "../components/Navbar";
 import { Outlet } from "react-router-dom";
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import { MusicPlayer } from "../components/MusicPlayer/index.jsx";
 import { useSelector } from "react-redux";
 

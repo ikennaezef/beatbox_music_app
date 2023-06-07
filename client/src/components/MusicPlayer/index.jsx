@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
 	Button,
 	Flex,
@@ -67,7 +67,7 @@ const MusicPlayer = () => {
 			time: audioRef?.current
 				? Math.round(
 						(audioRef?.current.currentTime / audioRef.current.duration) * 100
-				  )
+				  ) // eslint-disable-line no-mixed-spaces-and-tabs
 				: 0,
 			shuffle: false,
 			repeat: false,
@@ -179,7 +179,7 @@ const MusicPlayer = () => {
 					status: "success",
 				});
 			})
-			.catch((err) => {
+			.catch(() => {
 				toast({
 					description: "An error occured",
 					status: "error",

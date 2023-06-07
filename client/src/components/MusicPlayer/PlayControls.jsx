@@ -1,5 +1,4 @@
 import { Button, Flex } from "@chakra-ui/react";
-import React from "react";
 import { AiFillPauseCircle, AiFillPlayCircle } from "react-icons/ai";
 import {
 	TbArrowsShuffle,

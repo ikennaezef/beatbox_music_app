@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Heading, Image, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 

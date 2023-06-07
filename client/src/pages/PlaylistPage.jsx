@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { client } from "../api";
 import { useParams, Link } from "react-router-dom";
 import LoadingSkeleton from "../components/LoadingSkeleton";
@@ -38,7 +38,7 @@ const PlaylistPage = () => {
 				setData(res.data);
 				setLoading(false);
 			})
-			.catch((err) => {
+			.catch(() => {
 				setError(true);
 				setLoading(false);
 			});

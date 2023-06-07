@@ -12,7 +12,7 @@ export const playerSlice = createSlice({
 	name: "player",
 	initialState,
 	reducers: {
-		resetPlayer: (state, action) => {
+		resetPlayer: (state) => {
 			state.currentTrack = null;
 			state.isPlaying = false;
 			state.currentIndex = 0;
@@ -33,7 +33,7 @@ export const playerSlice = createSlice({
 			state.trackList = action.payload.list;
 			state.currentIndex = action.payload.index ? action.payload.index : 0;
 		},
-		nextTrack: (state, action) => {
+		nextTrack: (state) => {
 			if (state.currentIndex >= state.trackList.length - 1) {
 				state.currentIndex = 0;
 				state.currentTrack = state.trackList[0];
@@ -42,7 +42,7 @@ export const playerSlice = createSlice({
 				state.currentIndex += 1;
 			}
 		},
-		prevTrack: (state, action) => {
+		prevTrack: (state) => {
 			if (state.currentIndex == 0) {
 				state.currentIndex = state.trackList.length - 1;
 				state.currentTrack = state.trackList[state.trackList.length - 1];
@@ -51,7 +51,7 @@ export const playerSlice = createSlice({
 				state.currentIndex -= 1;
 			}
 		},
-		toggleRepeat: (state, action) => {
+		toggleRepeat: (state) => {
 			switch (state.repeatStatus) {
 				case "OFF":
 					state.repeatStatus = "TRACKLIST";

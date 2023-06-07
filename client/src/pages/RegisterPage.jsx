@@ -11,7 +11,7 @@ import {
 	Spinner,
 	Text,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { MdError } from "react-icons/md";
 import { Link } from "react-router-dom";

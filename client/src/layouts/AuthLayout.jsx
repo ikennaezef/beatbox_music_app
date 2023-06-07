@@ -1,5 +1,5 @@
 import { Box, Flex, Heading } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { BiMusic } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";

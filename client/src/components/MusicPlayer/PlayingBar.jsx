@@ -7,7 +7,6 @@ import {
 	SliderTrack,
 	Text,
 } from "@chakra-ui/react";
-import React from "react";
 import { BsSoundwave } from "react-icons/bs";
 import { convertToMins } from "../../utils";
 

@@ -7,7 +7,7 @@ import {
 	useDisclosure,
 	useToast,
 } from "@chakra-ui/react";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { AiFillHeart, AiFillPlayCircle, AiOutlineHeart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { BsSoundwave } from "react-icons/bs";
@@ -24,7 +24,7 @@ const ArtisteSong = ({ song, handlePlay }) => {
 	const modalRef = useRef();
 	const toast = useToast();
 
-	const isCurrentTrack = currentTrack?._id === song._id;
+	const isCurrentTrack = currentTrack?._id === song?._id;
 
 	const playSong = () => {
 		handlePlay(song);
@@ -44,7 +44,7 @@ const ArtisteSong = ({ song, handlePlay }) => {
 					status: "success",
 				});
 			})
-			.catch((err) => {
+			.catch(() => {
 				toast({
 					description: "An error occured",
 					status: "error",
@@ -118,14 +118,14 @@ const ArtisteSong = ({ song, handlePlay }) => {
 						</Button>
 					)}
 					<Text fontSize="sm" color="zinc.400">
-						{song?.duration.split(".").join(":")}
+						{song?.duration?.split(".")?.join(":")}
 					</Text>
 					<Button
 						variant="unstyled"
 						fontSize={24}
 						color="accent.main"
 						onClick={handleLike}>
-						{user?.favorites.includes(song._id) ? (
+						{user?.favorites?.includes(song?._id) ? (
 							<AiFillHeart color="inherit" />
 						) : (
 							<AiOutlineHeart color="#ddd" />

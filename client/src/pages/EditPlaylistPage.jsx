@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
 	Box,
@@ -55,7 +55,7 @@ const EditPlaylistPage = () => {
 
 				setFetchPlaylistStatus({ loading: false, error: false });
 			})
-			.catch((err) => {
+			.catch(() => {
 				setFetchPlaylistStatus({ loading: false, error: true });
 			});
 	};
@@ -71,7 +71,7 @@ const EditPlaylistPage = () => {
 					return { ...prev, data: res.data, loading: false };
 				});
 			})
-			.catch((err) => {
+			.catch(() => {
 				setOtherSongs((prev) => {
 					return { ...prev, error: true, loading: false };
 				});
@@ -138,7 +138,7 @@ const EditPlaylistPage = () => {
 					"Content-Type": "application/json",
 				},
 			})
-			.then((res) => {
+			.then(() => {
 				setEditLoading(false);
 				toast({
 					description: "Playlist updated!",

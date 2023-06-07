@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import HorizontalMusicCard from "./HorizontalMusicCard";
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
@@ -23,7 +23,7 @@ const TopCharts = () => {
 				setData(res.data);
 				setLoading(false);
 			})
-			.catch((err) => {
+			.catch(() => {
 				setError(true);
 				setLoading(false);
 			});

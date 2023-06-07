@@ -1,10 +1,9 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Flex, Image, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import React from "react";
 
 const ArtisteCard = ({ artiste }) => {
 	return (
-		<Link to={`/artiste/${artiste._id}`}>
+		<Link to={`/artiste/${artiste?._id}`}>
 			<Flex
 				direction="column"
 				align="center"
@@ -30,7 +29,7 @@ const ArtisteCard = ({ artiste }) => {
 					/>
 				</Flex>
 				<Text fontSize="sm" fontWeight={500} textAlign="center" mt={4}>
-					{artiste.name}
+					{artiste?.name}
 				</Text>
 			</Flex>
 		</Link>

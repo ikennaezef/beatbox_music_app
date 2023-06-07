@@ -13,7 +13,7 @@ import {
 	Text,
 	useToast,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import PlaylistSong from "../components/PlaylistSong";
@@ -53,7 +53,7 @@ const CreatePlaylistPage = () => {
 				setFavoritesLoading(false);
 				setFavorites(res.data);
 			})
-			.catch((err) => {
+			.catch(() => {
 				setFavoritesLoading(false);
 				setError({ ...error, favorites: true });
 			});
@@ -68,7 +68,7 @@ const CreatePlaylistPage = () => {
 				setOtherSongs(res.data);
 				setOtherSongsLoading(false);
 			})
-			.catch((err) => {
+			.catch(() => {
 				setError({ ...error, otherSongs: true });
 				setOtherSongsLoading(false);
 			});
@@ -105,7 +105,7 @@ const CreatePlaylistPage = () => {
 				);
 				navigate("/home");
 			})
-			.catch((err) => {
+			.catch(() => {
 				setCreatePlLoading(false);
 				toast({
 					description: "An error occured!",

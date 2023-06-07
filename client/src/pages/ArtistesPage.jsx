@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ArtisteCard from "../components/ArtisteCard";
 import { AiOutlineLoading } from "react-icons/ai";
 import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import { client } from "../api";
-import { useSelector } from "react-redux";
 
 const ArtistesPage = () => {
 	const [artistes, setArtistes] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
-	const { currentTrack } = useSelector((state) => state.player);
 
 	const fetchArtistes = async () => {
 		setLoading(true);
@@ -20,7 +18,7 @@ const ArtistesPage = () => {
 				setArtistes(res.data);
 				setLoading(false);
 			})
-			.catch((err) => {
+			.catch(() => {
 				setError(true);
 				setLoading(false);
 			});

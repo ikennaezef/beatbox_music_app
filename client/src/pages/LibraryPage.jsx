@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import SongCard from "../components/SongCard";
 import { AiOutlineLoading } from "react-icons/ai";
 import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
@@ -19,7 +18,7 @@ const LibraryPage = () => {
 				setSongs(res.data);
 				setLoading(false);
 			})
-			.catch((err) => {
+			.catch(() => {
 				setError(true);
 				setLoading(false);
 			});

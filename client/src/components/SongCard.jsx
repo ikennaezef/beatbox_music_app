@@ -1,4 +1,3 @@
-import React from "react";
 import {
 	Box,
 	Button,
@@ -53,7 +52,7 @@ const SongCard = ({ song }) => {
 					status: "success",
 				});
 			})
-			.catch((err) => {
+			.catch(() => {
 				toast({
 					description: "An error occured",
 					status: "error",
