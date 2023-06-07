@@ -18,7 +18,6 @@ const PlaylistsPage = () => {
 			.then((res) => {
 				setLoading(false);
 				setPlaylists(res.data);
-				console.log(res.data);
 			})
 			.catch((err) => {
 				setLoading(false);

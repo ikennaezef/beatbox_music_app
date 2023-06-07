@@ -23,8 +23,6 @@ const SmallSection = ({ title, endpoint }) => {
 			.catch((err) => {
 				setError(true);
 				setLoading(false);
-
-				console.log(err);
 			});
 	};
 

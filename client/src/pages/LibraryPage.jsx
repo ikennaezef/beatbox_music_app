@@ -20,7 +20,6 @@ const LibraryPage = () => {
 				setLoading(false);
 			})
 			.catch((err) => {
-				console.log("ERROR--->", err);
 				setError(true);
 				setLoading(false);
 			});

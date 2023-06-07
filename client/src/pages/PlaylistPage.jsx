@@ -35,7 +35,6 @@ const PlaylistPage = () => {
 		await client
 			.get(`/playlists/${id}`)
 			.then((res) => {
-				console.log(res.data);
 				setData(res.data);
 				setLoading(false);
 			})
