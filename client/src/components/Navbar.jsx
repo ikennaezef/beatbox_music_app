@@ -41,14 +41,15 @@ const MobileNav = () => {
 			h={navIsOpen ? "100vh" : undefined}
 			bg="zinc.950">
 			<Flex align="center" justify="space-between" p={2}>
-				<Flex color="accent.main" align="center" gap={4}>
-					<BiMusic color="inherit" size={30} />
-					<Link to="/home">
+				<Link to="/home">
+					<Flex color="accent.main" align="center" gap={4}>
+						<BiMusic color="inherit" size={30} />
+
 						<Heading as="h1" fontWeight="semibold" fontSize="2xl">
 							BeatBox
 						</Heading>
-					</Link>
-				</Flex>
+					</Flex>
+				</Link>
 				<Button variant="unstyled" onClick={toggleNav}>
 					{navIsOpen ? <TiTimes size={24} /> : <BiMenuAltRight size={24} />}
 				</Button>
