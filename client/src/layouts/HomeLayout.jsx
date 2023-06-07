@@ -10,7 +10,7 @@ const HomeLayout = () => {
 		<>
 			<Grid
 				position="relative"
-				templateColumns="repeat(10, 1fr)"
+				templateColumns={{ base: "1fr", md: "repeat(10, 1fr)" }}
 				bg="blackAlpha.900"
 				color="#e3e3e3">
 				<GridItem colSpan={2}>

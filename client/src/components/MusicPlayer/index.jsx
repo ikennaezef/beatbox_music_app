@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import {
 	Button,
 	Flex,
+	Hide,
 	SimpleGrid,
 	useDisclosure,
 	useToast,
@@ -225,17 +226,23 @@ const MusicPlayer = () => {
 						onPrevious={handlePreviousSong}
 						repeatStatus={repeatStatus}
 					/>
-					<PlayingBar
-						onSeek={seekPoint}
-						time={songDetails?.time}
-						track={currentTrack}
-						trackRef={audioRef.current}
-					/>
+					<Hide below="md">
+						<PlayingBar
+							onSeek={seekPoint}
+							time={songDetails?.time}
+							track={currentTrack}
+							trackRef={audioRef.current}
+						/>
+					</Hide>
 				</Flex>
-				<Flex align="center" justify="flex-end" gap={4}>
+				<Flex align="center" justify="flex-end" gap={{ base: 0, md: 4 }}>
 					<Button
 						variant="unstyled"
-						fontSize={24}
+						fontSize={{ base: 20, md: 24 }}
+						p={0}
+						display="inline-flex"
+						alignItems="center"
+						justifyContent="center"
 						color="accent.main"
 						onClick={handleLike}>
 						{user?.favorites.includes(currentTrack._id) ? (
@@ -245,11 +252,13 @@ const MusicPlayer = () => {
 						)}
 					</Button>
 					<Flex justifyContent="space-between" gap={0}>
-						<VolumeControl
-							onChange={changeVolume}
-							onToggle={volumeToggle}
-							volume={songDetails ? songDetails?.volume : 0}
-						/>
+						<Hide below="md">
+							<VolumeControl
+								onChange={changeVolume}
+								onToggle={volumeToggle}
+								volume={songDetails ? songDetails?.volume : 0}
+							/>
+						</Hide>
 						<audio
 							ref={audioRef}
 							src={currentTrack?.songUrl}

@@ -33,7 +33,7 @@ const SmallSection = ({ title, endpoint }) => {
 		<Box mt={8}>
 			<Flex align="center" justify="space-between">
 				<Flex align="center" gap={3}>
-					<Heading as="h3" fontSize="xl" fontWeight={500}>
+					<Heading as="h3" fontSize={{ base: "lg", md: "xl" }} fontWeight={500}>
 						{title}
 					</Heading>
 					<Box color="accent.main">
@@ -41,7 +41,11 @@ const SmallSection = ({ title, endpoint }) => {
 					</Box>
 				</Flex>
 				<Link to="/library">
-					<Button variant="unstyled" color="accent.light" fontWeight={500}>
+					<Button
+						variant="unstyled"
+						fontSize={{ base: "sm", md: "md" }}
+						color="accent.light"
+						fontWeight={500}>
 						See more
 					</Button>
 				</Link>

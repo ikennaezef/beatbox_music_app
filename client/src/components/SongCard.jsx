@@ -71,14 +71,14 @@ const SongCard = ({ song }) => {
 			variants={fadeInUp}
 			rounded="lg"
 			bg="zinc.900"
-			minW="10rem"
+			minW={{ base: "8rem", md: "10rem" }}
 			pb={4}
 			overflow="hidden"
 			role="group">
 			<Box
 				onClick={playSong}
 				cursor="pointer"
-				h="10rem"
+				h={{ base: "8rem", md: "10rem" }}
 				mb={4}
 				overflow="hidden"
 				position="relative">
@@ -121,11 +121,18 @@ const SongCard = ({ song }) => {
 			</Box>
 			<Flex gap={2} justify="space-between">
 				<Box px={2}>
-					<Heading as="h5" fontSize="base" noOfLines={1} fontWeight={500}>
+					<Heading
+						as="h5"
+						fontSize={{ base: "sm", md: "md" }}
+						noOfLines={1}
+						fontWeight={500}>
 						{song?.title}
 					</Heading>
 					<Link to={`/artiste/${song?.artistes[0]}`}>
-						<Text fontSize="sm" color="zinc.400" noOfLines={1}>
+						<Text
+							fontSize={{ base: "xs", md: "sm" }}
+							color="zinc.400"
+							noOfLines={1}>
 							{" "}
 							{song?.artistes.join(", ")}{" "}
 						</Text>

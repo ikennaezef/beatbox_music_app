@@ -1,4 +1,12 @@
-import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import {
+	Box,
+	Button,
+	Flex,
+	Heading,
+	Hide,
+	Image,
+	Text,
+} from "@chakra-ui/react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { fadeInUp } from "../theme/motionVariants";
@@ -21,18 +29,19 @@ const HorizontalMusicCard = ({ song, onPlay }) => {
 			w="full"
 			rounded="base">
 			<Flex align="center" justify="space-between">
-				<Flex align="center" gap={4}>
+				<Flex align="center" gap={{ base: 2, md: 4 }}>
 					<Image
 						src={song?.coverImage}
 						alt="album"
-						w={10}
-						h={10}
+						objectFit="cover"
+						w={{ base: 8, md: 10 }}
+						h={{ base: 8, md: 10 }}
 						rounded="base"
 					/>
 					<Box>
 						<Heading
 							as="h4"
-							fontSize="md"
+							fontSize={{ base: "sm", md: "md" }}
 							fontWeight={500}
 							color={
 								currentTrack?._id == song?._id ? "accent.light" : "zinc.200"
@@ -45,10 +54,12 @@ const HorizontalMusicCard = ({ song, onPlay }) => {
 						</Text>
 					</Box>
 				</Flex>
-				<Flex align="center" gap={3}>
-					<Text fontSize="sm" color="zinc.400">
-						{song?.duration?.split(".")?.join(":")}
-					</Text>
+				<Flex align="center" gap={{ base: 1, md: 3 }}>
+					<Hide below="lg">
+						<Text fontSize="sm" color="zinc.400">
+							{song?.duration?.split(".")?.join(":")}
+						</Text>
+					</Hide>
 					<Button variant="unstyled" color="zinc.300">
 						{user?.favorites?.includes(song._id) ? (
 							<AiFillHeart color="inherit" />

@@ -14,7 +14,7 @@ const Artistes = () => {
 		setLoading(true);
 		setError(false);
 		await client
-			.get("http://localhost:3001/api/artistes/top")
+			.get("/artistes/top")
 			.then((res) => {
 				setArtistes(res.data);
 				setLoading(false);
@@ -32,11 +32,15 @@ const Artistes = () => {
 	return (
 		<Box mt={8}>
 			<Flex align="center" justify="space-between" mb={3}>
-				<Heading as="h3" fontSize="xl" fontWeight={500}>
+				<Heading as="h3" fontSize={{ base: "lg", md: "xl" }} fontWeight={500}>
 					You May Like
 				</Heading>
 				<Link to="/artistes">
-					<Button variant="unstyled" color="accent.light" fontWeight={500}>
+					<Button
+						variant="unstyled"
+						color="accent.light"
+						fontSize={{ base: "sm", md: "md" }}
+						fontWeight={500}>
 						See more
 					</Button>
 				</Link>

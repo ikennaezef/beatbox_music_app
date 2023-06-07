@@ -26,14 +26,24 @@ const HomeHero = () => {
 				pb={6}
 				bgGradient="linear(to-t, zinc.900, transparent)">
 				<Box w="full">
-					<Heading as="h1" fontSize="4xl" fontWeight={600} mb={2}>
+					<Heading
+						as="h1"
+						fontSize={{ base: "2xl", md: "4xl" }}
+						fontWeight={600}
+						mb={2}>
 						Amazing Playlists
 					</Heading>
-					<Text w="80%">
+					<Text fontSize={{ base: "sm", md: "md" }} w="80%">
 						Listen to the best playlists curated by us and our users.
 					</Text>
 					<Link to="/playlists">
-						<Button bg="zinc.100" color="zinc.800" py={5} px={8} mt={4}>
+						<Button
+							bg="zinc.100"
+							color="zinc.800"
+							fontSize={{ base: "sm", md: "md" }}
+							py={{ base: 3, md: 5 }}
+							px={{ base: 5, md: 8 }}
+							mt={4}>
 							Listen Now
 						</Button>
 					</Link>

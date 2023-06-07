@@ -2,18 +2,18 @@ import { Flex, Image, Text } from "@chakra-ui/react";
 
 const TrackDetails = ({ track }) => {
 	return (
-		<Flex align="center" gap={4}>
+		<Flex align="center" gap={{ base: 2, md: 4 }}>
 			<Image
 				src={track?.coverImage}
 				alt={track?.title}
 				objectFit="cover"
-				w="3rem"
-				h="3rem"
+				w={{ base: "2rem", md: "3rem" }}
+				h={{ base: "2rem", md: "3rem" }}
 				rounded="lg"
 			/>
 			<Flex direction="column" align="flex-start">
-				<Text>{track?.title}</Text>
-				<Text fontSize="sm" color="zinc.500">
+				<Text fontSize={{ base: "sm", md: "md" }}>{track?.title}</Text>
+				<Text fontSize={{ base: "xs", md: "sm" }} color="zinc.500">
 					{track?.artistes.join(", ")}
 				</Text>
 			</Flex>

@@ -3,12 +3,16 @@ import SmallSection from "../components/SmallSection";
 import TopCharts from "../components/TopCharts";
 import Categories from "../components/Categories";
 import Search from "../components/Search";
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem, Hide, Show } from "@chakra-ui/react";
 import Artistes from "../components/Artistes";
 
 const HomePage = () => {
 	return (
-		<Grid templateColumns="repeat(8, 1fr)" minH="100vh" pb={24}>
+		<Grid
+			templateColumns={{ base: "1fr", md: "repeat(8, 1fr)" }}
+			minH="100vh"
+			pb={24}
+			pt={{ base: 14, md: 4 }}>
 			<GridItem colSpan={5} p={4}>
 				<Search />
 				<HomeHero />
@@ -18,7 +22,9 @@ const HomePage = () => {
 			</GridItem>
 			<GridItem colSpan={3} p={4}>
 				<TopCharts />
-				<Categories />
+				<Hide>
+					<Categories />
+				</Hide>
 			</GridItem>
 		</Grid>
 	);

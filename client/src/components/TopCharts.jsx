@@ -48,7 +48,7 @@ const TopCharts = () => {
 			initial="initial"
 			animate="animate"
 			variants={appear}
-			p={4}>
+			p={{ base: 2, md: 4 }}>
 			<Heading as="h3" fontSize="lg" fontWeight={500} mt={2} mb={6}>
 				Top Charts
 			</Heading>
