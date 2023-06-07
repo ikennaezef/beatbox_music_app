@@ -17,10 +17,10 @@ const PlaylistCard = ({ playlist }) => {
 					minH="100px"
 				/>
 				<Box>
-					<Heading fontWeight={500} mb={2} fontSize="md">
+					<Heading fontWeight={500} mb={2} fontSize="md" noOfLines={1}>
 						{playlist?.title}
 					</Heading>
-					<Text fontSize="sm" color="zinc.500">
+					<Text fontSize="sm" color="zinc.500" noOfLines={1}>
 						{playlist?.userName}
 					</Text>
 				</Box>

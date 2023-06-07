@@ -12,6 +12,7 @@ import ArtistesPage from "../pages/ArtistesPage";
 import FavoritesPage from "../pages/FavoritesPage";
 import PlaylistPage from "../pages/PlaylistPage";
 import CreatePlaylistPage from "../pages/CreatePlaylistPage";
+import EditPlaylistPage from "../pages/EditPlaylistPage";
 
 export const router = createBrowserRouter([
 	{
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
 			{
 				path: "playlists/create",
 				element: <CreatePlaylistPage />,
+			},
+			{
+				path: "playlists/edit/:id",
+				element: <EditPlaylistPage />,
 			},
 			{
 				path: "artistes",

@@ -15,9 +15,9 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PlaylistSong from "../components/PlaylistSong";
-import { setUserFavorites } from "../redux/slices/userSlice";
+import { setUser } from "../redux/slices/userSlice";
 import { AiOutlineLoading } from "react-icons/ai";
 import { client } from "../api";
 
@@ -37,7 +37,8 @@ const CreatePlaylistPage = () => {
 	const toast = useToast();
 	const navigate = useNavigate();
 
-	const { user, token, favoritesList } = useSelector((state) => state.user);
+	const { user, token } = useSelector((state) => state.user);
+	const dispatch = useDispatch();
 
 	const fetchFavorites = async () => {
 		setFavoritesLoading(true);
@@ -99,6 +100,9 @@ const CreatePlaylistPage = () => {
 					description: "Playlist created!",
 					status: "success",
 				});
+				dispatch(
+					setUser({ ...user, playlists: user.favorites.push(res.data._id) })
+				);
 				navigate("/home");
 			})
 			.catch((err) => {

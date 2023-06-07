@@ -6,7 +6,6 @@ import { client } from "../api";
 import ArtisteSong from "../components/ArtisteSong";
 import { playTrack, setTrackList } from "../redux/slices/playerSlice";
 import { AiOutlineLoading } from "react-icons/ai";
-import { setUserFavorites } from "../redux/slices/userSlice";
 
 const FavoritesPage = () => {
 	const [favorites, setFavorites] = useState([]);
@@ -26,7 +25,6 @@ const FavoritesPage = () => {
 			})
 			.then((res) => {
 				setLoading(false);
-				dispatch(setUserFavorites(res.data));
 				setFavorites(res.data);
 			})
 			.catch((err) => {

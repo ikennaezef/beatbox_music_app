@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { client } from "../api";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import LoadingSkeleton from "../components/LoadingSkeleton";
 import { MdErrorOutline } from "react-icons/md";
 import {
@@ -13,7 +13,7 @@ import {
 	Text,
 } from "@chakra-ui/react";
 import ArtisteSong from "../components/ArtisteSong";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { playTrack, setTrackList } from "../redux/slices/playerSlice";
 import { BsFillPlayFill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
@@ -23,9 +23,11 @@ const PlaylistPage = () => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(false);
 
-	const dispatch = useDispatch();
-
 	const { id } = useParams();
+
+	const dispatch = useDispatch();
+	const { user } = useSelector((state) => state.user);
+	const isUserPlaylist = user.id === data?.userId;
 
 	const fetchPlaylist = async () => {
 		setLoading(true);
@@ -110,20 +112,24 @@ const PlaylistPage = () => {
 						<Text fontSize="sm" color="zinc.400">
 							{data?.description}
 						</Text>
-						<Button
-							variant="outline"
-							leftIcon={<AiFillEdit />}
-							size="sm"
-							mt={2}
-							_hover={{}}>
-							Edit
-						</Button>
+						{isUserPlaylist && (
+							<Link to={`/playlists/edit/${id}`}>
+								<Button
+									variant="outline"
+									leftIcon={<AiFillEdit />}
+									size="sm"
+									mt={2}
+									_hover={{}}>
+									Edit
+								</Button>
+							</Link>
+						)}
 					</Box>
 				</Flex>
 				<Box mt={12}>
 					<Flex align="center" gap={6} mb={4}>
 						<Heading as="h3" fontSize="xl" fontWeight={600}>
-							Songs
+							{data?.songs?.length} Songs
 						</Heading>
 						<Button
 							onClick={handlePlay}
