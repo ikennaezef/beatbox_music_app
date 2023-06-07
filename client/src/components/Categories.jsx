@@ -35,7 +35,7 @@ const categories = [
 
 const Categories = () => {
 	return (
-		<Box mt={12} className="mt-12">
+		<Box mt={12}>
 			<Heading fontSize="xl" mb={8}>
 				Categories
 			</Heading>

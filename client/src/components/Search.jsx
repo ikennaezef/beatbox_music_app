@@ -1,17 +1,24 @@
+import { Box, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { BsSearch } from "react-icons/bs";
 
 const Search = () => {
 	return (
-		<div className="mb-6 pb-4 border-b border-b-zinc-600">
-			<div className="flex items-center border border-zinc-700 rounded p-1 pr-4">
-				<input
-					type="text"
+		<Box mb={6} pb={4} borderBottom="1px" borderBottomColor="zinc.600">
+			<InputGroup>
+				<Input
+					border="1px"
+					borderColor="zinc.700"
 					placeholder="Search..."
-					className="w-full outline-none p-2 bg-transparent"
+					w="full"
+					outline={0}
+					bg="transparent"
+					p={2}
 				/>
-				<BsSearch className="text-zinc-500" />
-			</div>
-		</div>
+				<InputRightElement color="zinc.500">
+					<BsSearch color="inherit" />
+				</InputRightElement>
+			</InputGroup>
+		</Box>
 	);
 };
 

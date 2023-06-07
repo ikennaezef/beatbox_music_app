@@ -36,8 +36,8 @@ const Navbar = () => {
 			borderRightColor="zinc.600"
 			bg="zinc.900">
 			<Flex direction="column" minH="100vh" p={4}>
-				<Flex align="center" gap={4}>
-					<BiMusic className="text-accent" size={30} />
+				<Flex color="accent.main" align="center" gap={4}>
+					<BiMusic color="inherit" size={30} />
 					<Heading as="h1" fontWeight="semibold" fontSize="2xl">
 						BeatBox
 					</Heading>

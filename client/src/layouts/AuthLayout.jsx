@@ -16,8 +16,8 @@ const AuthLayout = () => {
 	return (
 		<main>
 			<Flex align="center" justify="center" bg="zinc.800" p={4} h="5rem">
-				<Flex align="center" justify="center" gap={2}>
-					<BiMusic className="text-accent" size={30} />
+				<Flex align="center" color="accent.main" justify="center" gap={2}>
+					<BiMusic size={30} />
 					<Heading fontWeight="semibold" color="gray.200" fontSize="2xl">
 						BeatBox
 					</Heading>

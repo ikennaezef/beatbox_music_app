@@ -1,10 +1,22 @@
 import { Box, Heading, Image, Text } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { fadeInUp } from "../theme/motionVariants";
 
 const PlaylistCard = ({ playlist }) => {
 	return (
 		<Link to={`/playlists/${playlist?._id}`}>
-			<Box className="rounded bg-zinc-900 min-w-[10rem] max-w-[12rem] p-2 pb-4 animate-fade-up">
+			<Box
+				rounded="md"
+				bg="zinc.900"
+				minW="10rem"
+				maxW="12rem"
+				p={2}
+				pb={4}
+				as={motion.div}
+				variants={fadeInUp}
+				initial="initial"
+				animate="animate">
 				<Image
 					src="https://firebasestorage.googleapis.com/v0/b/socialstream-ba300.appspot.com/o/music_app_files%2Fplaylist_cover.jpg?alt=media&token=546adcad-e9c3-402f-8a57-b7ba252100ec"
 					alt={playlist?.title}
