@@ -4,3 +4,9 @@ export const convertToMins = (value) => {
 	const formattedSeconds = secs < 10 ? "0" + secs : secs;
 	return `${mins}:${formattedSeconds}`;
 };
+
+export const truncateText = (text, length) => {
+	if (text.length > length) {
+		return text.slice(0, length) + "...";
+	} else return text;
+};

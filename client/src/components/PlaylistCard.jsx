@@ -10,7 +10,7 @@ const PlaylistCard = ({ playlist }) => {
 				rounded="md"
 				bg="zinc.900"
 				minW={{ base: "8rem", md: "10rem" }}
-				maxW="12rem"
+				maxW={{ base: undefined, md: "12rem" }}
 				p={2}
 				pb={4}
 				as={motion.div}

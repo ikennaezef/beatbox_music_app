@@ -13,11 +13,13 @@ const TrackDetails = ({ track }) => {
 			/>
 			<Flex direction="column" align="flex-start">
 				<Text
+					textAlign="left"
 					fontSize={{ base: "sm", md: "md" }}
-					noOfLines={{ base: 1, md: undefined }}>
+					noOfLines={1}>
 					{track?.title}
 				</Text>
 				<Text
+					textAlign="left"
 					fontSize={{ base: "xs", md: "sm" }}
 					color="zinc.500"
 					noOfLines={{ base: 1, md: undefined }}>

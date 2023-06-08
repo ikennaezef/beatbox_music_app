@@ -30,6 +30,7 @@ const CreatePlaylistCard = () => {
 				direction="column"
 				align="center"
 				justify="center"
+				minW={{ base: "8rem", md: "10rem" }}
 				bg="zinc.800"
 				rounded="base">
 				<Button
@@ -39,7 +40,7 @@ const CreatePlaylistCard = () => {
 					display="inline-flex"
 					alignItems="center"
 					rounded="base"
-					boxSize="4rem"
+					boxSize={{ base: "2rem", md: "4rem" }}
 					mb={3}>
 					<BiPlus size={24} />
 				</Button>

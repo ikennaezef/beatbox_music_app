@@ -48,7 +48,7 @@ const Categories = () => {
 						justify="center"
 						rounded="base"
 						pos="relative"
-						h={24}
+						h={{ base: 24, "2xl": 32 }}
 						cursor="pointer">
 						<Image
 							src={cat.image}
@@ -58,7 +58,8 @@ const Categories = () => {
 							top={0}
 							rounded="base"
 							objectFit="cover"
-							h={24}
+							h="full"
+							w="full"
 						/>
 						<Flex
 							align="center"
