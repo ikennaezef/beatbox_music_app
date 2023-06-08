@@ -100,10 +100,10 @@ const CreatePlaylistPage = () => {
 					description: "Playlist created!",
 					status: "success",
 				});
-				dispatch(
-					setUser({ ...user, playlists: user.favorites.push(res.data._id) })
-				);
 				navigate("/home");
+				dispatch(
+					setUser({ ...user, playlists: [...user?.playlists, res.data?._id] })
+				);
 			})
 			.catch(() => {
 				setCreatePlLoading(false);
