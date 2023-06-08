@@ -187,7 +187,13 @@ const NavContent = () => {
 					)}
 				</NavLink>
 			</Flex>
-			<Divider bg="zinc.500" border="0" mt={12} h="1px" mb={4} />
+			<Divider
+				bg="zinc.500"
+				border="0"
+				mt={{ base: 12, md: 6, lg: 12 }}
+				h="1px"
+				mb={4}
+			/>
 			<Box>
 				{user ? (
 					<Box p={3}>
@@ -199,7 +205,7 @@ const NavContent = () => {
 						</Flex>
 						<Button
 							onClick={handleLogout}
-							mt={8}
+							mt={{ base: 8, md: 4, lg: 8 }}
 							variant="unstyled"
 							display="inline-flex"
 							alignItems="center"

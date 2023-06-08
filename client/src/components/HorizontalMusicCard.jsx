@@ -55,12 +55,12 @@ const HorizontalMusicCard = ({ song, onPlay }) => {
 					</Box>
 				</Flex>
 				<Flex align="center" gap={{ base: 1, md: 3 }}>
-					<Hide below="lg">
+					<Hide below="xl">
 						<Text fontSize="sm" color="zinc.400">
 							{song?.duration?.split(".")?.join(":")}
 						</Text>
 					</Hide>
-					<Button variant="unstyled" color="zinc.300">
+					<Button variant="unstyled" minW={5} color="zinc.300">
 						{user?.favorites?.includes(song._id) ? (
 							<AiFillHeart color="inherit" />
 						) : (

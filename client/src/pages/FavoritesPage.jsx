@@ -62,7 +62,12 @@ const FavoritesPage = () => {
 	}
 
 	return (
-		<Box p={4} pb={32} minH="100vh" pt={{ base: 20, md: 6 }}>
+		<Box
+			p={4}
+			pb={32}
+			minH="100vh"
+			pt={{ base: 20, md: 6 }}
+			pl={{ base: 0, md: 14, xl: 0 }}>
 			<Box mb={6}>
 				<Heading
 					fontSize={{ base: "lg", md: "2xl" }}

@@ -143,6 +143,7 @@ const SongCard = ({ song }) => {
 						variant="unstyled"
 						_hover={{ color: "accent.transparent" }}
 						color={isFavorite ? "accent.main" : "#b1b1b1"}
+						minW={6}
 						onClick={handleLike}>
 						{isFavorite ? (
 							<AiFillHeart color="inherit" />

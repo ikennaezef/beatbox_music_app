@@ -29,7 +29,12 @@ const LibraryPage = () => {
 	}, []);
 
 	return (
-		<Box p={6} pb={32} pt={{ base: 20, md: 6 }} minH="100vh">
+		<Box
+			p={6}
+			pb={32}
+			pt={{ base: 20, md: 6 }}
+			pl={{ base: 0, md: 14, xl: 0 }}
+			minH="100vh">
 			<Box mb={6}>
 				<Heading
 					fontSize={{ base: "lg", md: "2xl" }}
@@ -47,7 +52,12 @@ const LibraryPage = () => {
 				</Flex>
 			)}
 			<Grid
-				templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(5, 1fr)" }}
+				templateColumns={{
+					base: "repeat(2, 1fr)",
+					md: "repeat(3, 1fr)",
+					lg: "repeat(4, 1fr)",
+					xl: "repeat(5, 1fr)",
+				}}
 				gap={{ base: 3, md: 6 }}>
 				{songs.map((song) => (
 					<SongCard key={song._id} song={song} />

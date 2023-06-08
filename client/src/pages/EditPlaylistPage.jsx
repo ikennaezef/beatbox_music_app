@@ -157,7 +157,7 @@ const EditPlaylistPage = () => {
 	};
 
 	return (
-		<Box p={4} pb={32} pt={{ base: 24, md: 4 }}>
+		<Box p={4} pb={32} pt={{ base: 24, md: 4 }} pl={{ base: 0, md: 14, xl: 0 }}>
 			<Flex align="center" justify="space-between" mb={6}>
 				<Heading fontSize="2xl" fontWeight="semibold">
 					Edit Playlist

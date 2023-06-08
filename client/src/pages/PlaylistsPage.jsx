@@ -44,7 +44,7 @@ const PlaylistsPage = () => {
 	}
 
 	return (
-		<Box p={6} pb={32} pt={{ base: 20, md: 6 }}>
+		<Box p={6} pb={32} pt={{ base: 20, md: 6 }} pl={{ base: 0, md: 14, xl: 0 }}>
 			<Box>
 				<Heading
 					as="h2"
@@ -64,7 +64,12 @@ const PlaylistsPage = () => {
 			)}
 			{!loading && !error && (
 				<Grid
-					templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(5, 1fr)" }}
+					templateColumns={{
+						base: "repeat(2, 1fr)",
+						md: "repeat(3, 1fr)",
+						lg: "repeat(4, 1fr)",
+						xl: "repeat(5, 1fr)",
+					}}
 					gap={5}
 					mt={10}>
 					<CreatePlaylistCard />
