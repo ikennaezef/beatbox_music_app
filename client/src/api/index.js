@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const client = axios.create({
-	baseURL: "http://localhost:3001/api",
+	baseURL: "https://beatbox-music-backend.vercel.app/api/",
 });
