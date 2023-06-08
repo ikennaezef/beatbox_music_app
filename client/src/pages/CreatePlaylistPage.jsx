@@ -157,7 +157,7 @@ const CreatePlaylistPage = () => {
 			pb={32}
 			minH="100vh"
 			pt={{ base: 20, md: 6 }}
-			pl={{ base: 0, md: 14, xl: 0 }}>
+			pl={{ base: 4, md: 14, xl: 0 }}>
 			<Flex align="center" justify="space-between" mb={6}>
 				<Heading fontSize="2xl" fontWeight="semibold">
 					Create a Playlist

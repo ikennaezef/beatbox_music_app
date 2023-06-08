@@ -67,7 +67,7 @@ const FavoritesPage = () => {
 			pb={32}
 			minH="100vh"
 			pt={{ base: 20, md: 6 }}
-			pl={{ base: 0, md: 14, xl: 0 }}>
+			pl={{ base: 4, md: 14, xl: 0 }}>
 			<Box mb={6}>
 				<Heading
 					fontSize={{ base: "lg", md: "2xl" }}

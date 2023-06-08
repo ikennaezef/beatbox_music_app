@@ -44,7 +44,7 @@ const PlaylistsPage = () => {
 	}
 
 	return (
-		<Box p={6} pb={32} pt={{ base: 20, md: 6 }} pl={{ base: 0, md: 14, xl: 0 }}>
+		<Box p={6} pb={32} pt={{ base: 20, md: 6 }} pl={{ base: 4, md: 14, xl: 0 }}>
 			<Box>
 				<Heading
 					as="h2"

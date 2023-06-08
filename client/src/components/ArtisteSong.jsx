@@ -127,6 +127,7 @@ const ArtisteSong = ({ song, handlePlay }) => {
 					<Button
 						variant="unstyled"
 						fontSize={{ base: 18, md: 24 }}
+						minW={6}
 						color="accent.main"
 						onClick={handleLike}>
 						{user?.favorites?.includes(song?._id) ? (

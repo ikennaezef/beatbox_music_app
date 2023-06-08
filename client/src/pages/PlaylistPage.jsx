@@ -81,7 +81,7 @@ const PlaylistPage = () => {
 		<Box
 			minH="100vh"
 			p={{ base: 2, md: 4 }}
-			pl={{ base: 0, md: 14, xl: 0 }}
+			pl={{ base: 4, md: 14, xl: 0 }}
 			pb={{ base: 32, md: 32 }}
 			pt={{ base: 12, md: 4 }}>
 			<Box pt={6}>

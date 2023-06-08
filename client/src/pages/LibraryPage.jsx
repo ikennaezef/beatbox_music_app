@@ -33,7 +33,7 @@ const LibraryPage = () => {
 			p={6}
 			pb={32}
 			pt={{ base: 20, md: 6 }}
-			pl={{ base: 0, md: 14, xl: 0 }}
+			pl={{ base: 4, md: 14, xl: 0 }}
 			minH="100vh">
 			<Box mb={6}>
 				<Heading
